@@ -1,0 +1,18 @@
+# Virtual environment — recreate it with the steps in SETUP.md, don't commit it
+.venv/
+
+# Python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Note: progress.json and starters/ are intentionally TRACKED, so your progress
+# follows you across machines. If you ever make this repo public, consider adding
+# `progress.json` here so your personal progress isn't published.

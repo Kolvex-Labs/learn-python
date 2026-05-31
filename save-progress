@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Save your study progress AND your lab code to GitHub in one step.
+#
+#   ./save-progress      (or just `save-progress` if you added the alias)
+#
+# It commits progress.json and any lab files you've worked on (only if something
+# actually changed) and pushes them to your GitHub repo, so your work is backed
+# up and follows you to other machines. Run it from anywhere — it finds its folder.
+# The site also runs this automatically when you stop it.
+
+cd "$(dirname "$0")" || exit 1
+
+# Nothing changed in your progress or your lab code? Then there's nothing to back up.
+if [ -z "$(git status --porcelain -- progress.json labs)" ]; then
+  echo "Nothing new to save — your work is already backed up. ✓"
+  exit 0
+fi
+
+stamp="$(date '+%Y-%m-%d %H:%M')"
+git add progress.json labs || exit 1
+git commit -q -m "Save study progress ($stamp)" || exit 1
+
+if git push -q origin main 2>/dev/null; then
+  echo "Progress and lab code saved to GitHub. ✓  ($stamp)"
+else
+  echo "Saved locally, but the push failed (offline?)."
+  echo "Your work is committed and safe — run 'git push' later to back it up."
+  exit 1
+fi

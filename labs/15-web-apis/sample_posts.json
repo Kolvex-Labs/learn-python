@@ -1,0 +1,7 @@
+[
+  {"userId": 1, "id": 1, "title": "First steps with Python", "body": "Today I wrote my very first script and it printed hello."},
+  {"userId": 1, "id": 2, "title": "Reading files", "body": "Files are just text on disk that Python can open and read."},
+  {"userId": 1, "id": 3, "title": "Loops save time", "body": "A for loop repeats work so you do not have to copy and paste."},
+  {"userId": 2, "id": 4, "title": "What is an API", "body": "An API lets one program ask another program for data."},
+  {"userId": 2, "id": 5, "title": "JSON is friendly", "body": "JSON looks just like Python lists and dicts which makes it easy."}
+]

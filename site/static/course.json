@@ -1,0 +1,1977 @@
+{
+  "modules": [
+    {
+      "num": "00",
+      "title": "Setup & Your First Program",
+      "slug": "00-setup",
+      "lesson_md": "# Module 00 \u2014 Setup & Your First Program\n\n## What you'll learn\n\n- What Python is and what \"running a program\" actually means\n- How to run Python three ways: a script, the interactive REPL, and the lab tests\n- How to write and run your very first program\n- How to read a tiny error message without panicking\n\n> Before this module, finish **`SETUP.md`** in the course root. It installs Python and\n> your virtual environment. This module assumes that's done and your Terminal prompt\n> shows `(.venv)`.\n\n---\n\n## The concept\n\n**Python is a language for giving a computer instructions.** You write those\ninstructions as plain text in a file, and a program called the *Python interpreter*\nreads your file from top to bottom and does what it says.\n\nThat's the whole idea. You write steps; Python performs them in order.\n\nA few words you'll see constantly:\n\n- **Code** \u2014 the instructions you write.\n- **Script** \u2014 a file full of code (ends in `.py`), like `hello.py`.\n- **Run** \u2014 to hand your script to Python so it does what the code says.\n- **Output** \u2014 what your program prints out or produces.\n- **The interpreter** \u2014 Python itself, the thing that runs your code. You started it in\n  setup; the command is `python`.\n\nThink of a recipe card. The card (your script) lists steps. The cook (Python) reads\neach step in order and does it. If a step is unclear, the cook stops and tells you\nwhich line confused them \u2014 that's an *error message*, and it's helpful, not scary.\n\n---\n\n## Show me\n\n### 1. The REPL \u2014 try one line at a time\n\nThe REPL is an interactive Python prompt. It's perfect for quick experiments. Start it:\n\n```bash\npython\n```\n\nYou'll see `>>>`. Type this and press Enter:\n\n```python\n>>> print(\"Hello, world!\")\nHello, world!\n```\n\n`print(...)` tells Python to show something. Try a little math:\n\n```python\n>>> 12 * 4\n48\n>>> 7 + 3\n10\n```\n\nLeave the REPL when you're done:\n\n```python\n>>> exit()\n```\n\n### 2. A script \u2014 save it and run it\n\nThe REPL forgets everything when you close it. Real programs live in files. In your\neditor, create a file called `hello.py` in the course folder with these two lines:\n\n```python\nprint(\"Hello, world!\")\nprint(\"I am learning Python.\")\n```\n\nSave it. Then in Terminal (with `(.venv)` showing, from `~/Code/python-course`):\n\n```bash\npython hello.py\n```\n\nExpected output:\n\n```\nHello, world!\nI am learning Python.\n```\n\nYou just wrote and ran a program. Python read `hello.py` top to bottom and did each\nline in order.\n\n### 3. Comments \u2014 notes Python ignores\n\nA `#` starts a comment. Python skips everything after it on that line. Comments are\nnotes for humans:\n\n```python\n# This is a note. Python ignores it.\nprint(\"Comments don't run.\")  # you can put one at the end of a line too\n```\n\n---\n\n## Common mistakes\n\n- **Forgetting to activate the venv.** If `python` or `pytest` says \"command not found\"\n  or behaves oddly, your prompt probably doesn't show `(.venv)`. Run\n  `source .venv/bin/activate` from the course folder first.\n- **Smart quotes instead of straight quotes.** If you copy text from a document, you\n  might get `\"curly\"` quotes. Python needs straight ones: `\"like this\"`. Editors like\n  VS Code use straight quotes automatically \u2014 type the code yourself.\n- **Running from the wrong folder.** `python hello.py` only works if `hello.py` is in\n  the folder your Terminal is in. Use `cd ~/Code/python-course` first.\n\n### Reading your first error on purpose\n\nMake a typo so you can see what an error looks like. Put this in a file and run it:\n\n```python\nprnt(\"oops\")\n```\n\nPython responds:\n\n```\nNameError: name 'prnt' is not defined\n```\n\nRead it bottom to top: the last line names the problem (`prnt` isn't a real thing),\nand Python even points at the line. The fix: spell it `print`. Errors are Python telling\nyou exactly where it got confused. You'll get very comfortable with them.\n\n---\n\n## Try it\n\nThere's no graded lab for this module \u2014 your \"lab\" is getting `hello.py` to print both\nlines. Once it does, you're ready.\n\nIf you want the tutor agent to confirm you're set up, ask it: *\"Check my Python setup.\"*\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does the Python interpreter do?",
+          "options": {
+            "A": "Designs the look of your program",
+            "B": "Reads your code and performs each instruction in order",
+            "C": "Saves your files to the cloud",
+            "D": "Connects your computer to the internet"
+          },
+          "correct": "B",
+          "explanation": "The interpreter reads your instructions and carries them out in order."
+        },
+        {
+          "n": 2,
+          "question_md": "Which command runs a script named `hello.py`?",
+          "options": {
+            "A": "`run hello.py`",
+            "B": "`python hello.py`",
+            "C": "`hello.py python`",
+            "D": "`open hello.py`"
+          },
+          "correct": "B",
+          "explanation": "`python hello.py` hands the file to the Python interpreter to run."
+        },
+        {
+          "n": 3,
+          "question_md": "What does `print(\"Hi\")` do?",
+          "options": {
+            "A": "Sends \"Hi\" to a printer",
+            "B": "Saves \"Hi\" to a file",
+            "C": "Shows `Hi` as output",
+            "D": "Nothing, it's a comment"
+          },
+          "correct": "C",
+          "explanation": "`print(...)` displays its contents as output in the Terminal."
+        },
+        {
+          "n": 4,
+          "question_md": "What happens to text after a `#` on a line?",
+          "options": {
+            "A": "Python runs it twice",
+            "B": "Python ignores it",
+            "C": "Python prints it in red",
+            "D": "It causes an error"
+          },
+          "correct": "B",
+          "explanation": "Everything after `#` on a line is a comment, which Python ignores."
+        },
+        {
+          "n": 5,
+          "question_md": "Your prompt does **not** show `(.venv)` and `pytest` says \"command not found\".\nWhat's the most likely fix?",
+          "options": {
+            "A": "Reinstall macOS",
+            "B": "Run `source .venv/bin/activate` in the course folder",
+            "C": "Rename your file",
+            "D": "Restart the computer"
+          },
+          "correct": "B",
+          "explanation": "No `(.venv)` means the virtual environment isn't active. Activate it from the course folder. (See SETUP.md, Step 4.)"
+        },
+        {
+          "n": 6,
+          "question_md": "What is the REPL best used for?",
+          "options": {
+            "A": "Storing programs permanently",
+            "B": "Trying out single lines of code interactively",
+            "C": "Editing images",
+            "D": "Installing Python"
+          },
+          "correct": "B",
+          "explanation": "The REPL runs one line at a time and forgets when closed \u2014 ideal for quick experiments, not for saving real programs."
+        }
+      ],
+      "lab": null
+    },
+    {
+      "num": "01",
+      "title": "Variables, Types & Printing",
+      "slug": "01-variables-and-types",
+      "lesson_md": "# Module 01 \u2014 Variables, Types & Printing\n\n## What you'll learn\n\n- How to store a value in a variable and use it later\n- The four everyday data types: text, whole numbers, decimals, and true/false\n- How to combine values into messages with f-strings\n- How to ask the user for input \u2014 and why it always arrives as text\n\n---\n\n## The concept\n\nA **variable** is a name for a value. You put a value in it, and later you use the name\nto get the value back. Think of it as a labeled box: you write `age` on the box, drop\n`30` inside, and from then on saying `age` means `30`.\n\nYou create a variable with `=`, the **assignment** sign:\n\n```python\nage = 30\nname = \"Alex\"\n```\n\nRead `=` as \"gets\" \u2014 *age gets 30*. It is **not** the \"equals\" from math; it means\n\"store the value on the right into the name on the left.\"\n\nEvery value has a **type** \u2014 what kind of thing it is. The four you'll use constantly:\n\n| Type | Means | Example |\n|------|-------|---------|\n| `str` | text (\"string\" of characters) | `\"hello\"`, `\"Alex\"` |\n| `int` | whole number | `30`, `-7`, `0` |\n| `float` | number with a decimal point | `19.99`, `3.0` |\n| `bool` | true or false | `True`, `False` |\n\nText always goes in quotes: `\"hello\"`. Numbers never do: `30`, not `\"30\"`. That\nquote is the difference between the number thirty and the two-character text \"30\" \u2014 and\nPython treats them very differently.\n\nYou can check a value's type with `type(...)`:\n\n```python\ntype(\"hello\")   # <class 'str'>\ntype(30)        # <class 'int'>\ntype(19.99)     # <class 'float'>\ntype(True)      # <class 'bool'>\n```\n\n---\n\n## Show me\n\n### Storing and using variables\n\n```python\nname = \"Alex\"\nage = 30\n\nprint(name)        # Alex\nprint(age)         # 30\n```\n\n### f-strings: building messages\n\nTo drop a variable into a sentence, put an `f` before the opening quote and wrap the\nvariable in `{curly braces}`. This is an **f-string** (\"formatted string\"):\n\n```python\nname = \"Alex\"\nage = 30\n\nprint(f\"My name is {name} and I am {age}.\")\n# My name is Alex and I am 30.\n```\n\nWithout the `f`, the braces are just literal text \u2014 a classic beginner trip-up:\n\n```python\nprint(\"My name is {name}.\")    # My name is {name}.   <- not what you want\nprint(f\"My name is {name}.\")   # My name is Alex.     <- correct\n```\n\n### Reassigning\n\nA variable can change. The latest assignment wins:\n\n```python\nscore = 10\nscore = 25\nprint(score)   # 25\n```\n\n### Getting input from the user\n\n`input(...)` shows a prompt and waits for the user to type. **Whatever they type comes\nback as a `str`**, even if it looks like a number:\n\n```python\nage_text = input(\"How old are you? \")   # user types 30\nprint(type(age_text))                   # <class 'str'>  <- text, not a number!\n```\n\nTo do math with it, **convert** it to a number with `int(...)` or `float(...)`:\n\n```python\nage = int(age_text)     # now it's the number 30\nprint(age + 1)          # 31\n```\n\nGoing the other way, `str(...)` turns a number into text.\n\n---\n\n## Common mistakes\n\n- **Forgetting the `f`.** `print(\"Hi {name}\")` prints the literal `{name}`. You need\n  `print(f\"Hi {name}\")`. If your braces show up in the output, you forgot the `f`.\n- **Treating `input()` as a number.** `input()` always returns text. `input(\"n? \") + 1`\n  crashes because you can't add a number to text. Convert first: `int(input(\"n? \")) + 1`.\n- **Quoting numbers you want to do math with.** `\"30\" + \"5\"` gives `\"305\"` (text glued\n  together), not `35`. Drop the quotes for real numbers.\n\n---\n\n## Try it\n\nOpen **`labs/01-variables/`** and read its `README.md`. You'll complete the functions in\n`variables.py`, then run:\n\n```bash\npytest labs/01-variables/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does `=` do in `x = 5`?",
+          "options": {
+            "A": "Tests whether x equals 5",
+            "B": "Stores the value 5 in the variable x",
+            "C": "Prints 5",
+            "D": "Creates an error"
+          },
+          "correct": "B",
+          "explanation": "`=` is assignment: it stores the value on the right into the name on the left. (A comparison would use `==`, which you'll meet in Module 02.)"
+        },
+        {
+          "n": 2,
+          "question_md": "What is the type of `\"30\"`?",
+          "options": {
+            "A": "`int`",
+            "B": "`float`",
+            "C": "`str`",
+            "D": "`bool`"
+          },
+          "correct": "C",
+          "explanation": "The quotes make it a string. `30` without quotes would be an `int`."
+        },
+        {
+          "n": 3,
+          "question_md": "What does this print?\n```python\nname = \"Sam\"\nprint(f\"Hi {name}\")\n```",
+          "options": {
+            "A": "`Hi {name}`",
+            "B": "`Hi Sam`",
+            "C": "`f\"Hi Sam\"`",
+            "D": "`Hi name`"
+          },
+          "correct": "B",
+          "explanation": "The `f` prefix turns `{name}` into the variable's value, `Sam`."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `input(\"Age? \")` return when the user types `25`?",
+          "options": {
+            "A": "The number `25` as an `int`",
+            "B": "The text `\"25\"` as a `str`",
+            "C": "`True`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "`input()` always returns a `str`, even when the text looks like a number."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `\"5\" + \"2\"` produce?",
+          "options": {
+            "A": "`7`",
+            "B": "`\"7\"`",
+            "C": "`\"52\"`",
+            "D": "An error"
+          },
+          "correct": "C",
+          "explanation": "With strings, `+` joins them end to end, giving `\"52\"`. Numbers would add."
+        },
+        {
+          "n": 6,
+          "question_md": "Which line correctly turns the text `\"19\"` into the number 19?",
+          "options": {
+            "A": "`int(\"19\")`",
+            "B": "`str(19)`",
+            "C": "`\"19\".number()`",
+            "D": "`float \"19\"`"
+          },
+          "correct": "A",
+          "explanation": "`int(\"19\")` converts text to a whole number. `str(19)` does the reverse."
+        },
+        {
+          "n": 7,
+          "question_md": "After these lines, what does `print(score)` show?\n```python\nscore = 10\nscore = 25\n```",
+          "options": {
+            "A": "`10`",
+            "B": "`25`",
+            "C": "`35`",
+            "D": "`1025`"
+          },
+          "correct": "B",
+          "explanation": "Reassignment replaces the old value; the most recent one (`25`) wins."
+        }
+      ],
+      "lab": {
+        "id": "01-variables",
+        "dir": "labs/01-variables",
+        "topic": "variables",
+        "learner_file": "labs/01-variables/variables.py",
+        "solution_file": "labs/01-variables/variables_solution.py",
+        "starter_snapshot": "starters/01-variables__variables.py"
+      }
+    },
+    {
+      "num": "02",
+      "title": "Operators & Expressions",
+      "slug": "02-operators-and-expressions",
+      "lesson_md": "# Module 02 \u2014 Operators & Expressions\n\n## What you'll learn\n\n- The arithmetic operators and what each one does: `+ - * / // % **`\n- How `/`, `//`, and `%` differ, and when you want each\n- How to compare two values with `== != < > <= >=`\n- How to combine true/false tests with `and`, `or`, and `not`\n- The order Python uses when an expression has several operators\n\n---\n\n## The concept\n\nAn **operator** is a symbol that does something to values, like `+` for adding. The\nvalues it works on are called **operands**. Put operators and values together and you\nget an **expression** \u2014 a piece of code that produces a result.\n\n```python\n3 + 4      # an expression; its result is 7\n```\n\n### Arithmetic operators\n\nThese do math. Most look familiar from a calculator:\n\n| Operator | Name | Example | Result |\n|----------|------|---------|--------|\n| `+` | add | `3 + 4` | `7` |\n| `-` | subtract | `10 - 4` | `6` |\n| `*` | multiply | `3 * 4` | `12` |\n| `/` | divide | `7 / 2` | `3.5` |\n| `//` | floor divide | `7 // 2` | `3` |\n| `%` | remainder (modulo) | `7 % 2` | `1` |\n| `**` | power | `2 ** 3` | `8` |\n\nThe three division operators are the part people mix up, so let's slow down.\n\n- **`/` is regular division.** It always gives a `float` (a decimal), even when the\n  numbers divide evenly. `8 / 2` is `4.0`, not `4`.\n- **`//` is floor division.** It divides and throws away anything after the decimal\n  point, giving the whole number underneath. `7 // 2` is `3`, because 2 goes into 7\n  three full times.\n- **`%` is the remainder** (its real name is *modulo*). It tells you what's left over\n  after floor division. `7 % 2` is `1`, because 7 is 2\u00d73 with 1 left over.\n\nA clock helps. To turn 130 seconds into minutes and seconds: `130 // 60` is `2` whole\nminutes, and `130 % 60` is `10` leftover seconds. So 130 seconds is 2 minutes and 10\nseconds. You'll write exactly this in the lab.\n\nOne handy trick: `n % 2` is `0` for every even number and `1` for every odd one. That's\nthe standard way to test \"is this even?\"\n\n### Comparison operators\n\nThese ask a yes/no question about two values and hand back a **bool** (`True` or\n`False`):\n\n| Operator | Asks | Example | Result |\n|----------|------|---------|--------|\n| `==` | are they equal? | `3 == 3` | `True` |\n| `!=` | are they different? | `3 != 4` | `True` |\n| `<` | is left smaller? | `3 < 4` | `True` |\n| `>` | is left bigger? | `3 > 4` | `False` |\n| `<=` | smaller or equal? | `3 <= 3` | `True` |\n| `>=` | bigger or equal? | `4 >= 3` | `True` |\n\nNote the doubled `==`. One `=` stores a value; two `==` *compare* values. Mixing them up\nis one of the most common beginner bugs, so watch for it.\n\n### Boolean operators\n\nThese combine true/false values:\n\n- **`and`** is `True` only when *both* sides are true. `(age >= 18) and (age < 65)`\n- **`or`** is `True` when *at least one* side is true. `is_weekend or is_holiday`\n- **`not`** flips a value. `not True` is `False`.\n\n### Operator precedence\n\nWhen an expression mixes operators, Python follows an order, just like math class.\nPower first, then multiply/divide, then add/subtract, then comparisons, then `not`, then\n`and`, then `or`.\n\n```python\n2 + 3 * 4     # 14, not 20 \u2014 the * happens before the +\n```\n\nWhen in doubt, add parentheses. They force the order *and* make your code clearer:\n\n```python\n(2 + 3) * 4   # 20 \u2014 the parentheses go first\n```\n\n---\n\n## Show me\n\n### The three divisions side by side\n\n```python\nprint(7 / 2)    # 3.5\nprint(7 // 2)   # 3\nprint(7 % 2)    # 1\nprint(8 / 2)    # 4.0   <- still a float, even though it's even\n```\n\n### Even or odd with the remainder\n\n```python\nprint(10 % 2)   # 0   <- even\nprint(7 % 2)    # 1   <- odd\n```\n\n### Comparisons return True or False\n\n```python\nprint(5 > 3)        # True\nprint(5 == 5)       # True\nprint(5 != 5)       # False\nprint(2 <= 2)       # True\n```\n\n### Combining tests\n\n```python\nage = 20\nprint(age >= 18 and age < 65)   # True\nprint(age < 13 or age >= 65)    # False\nprint(not (age >= 18))          # False\n```\n\n### Precedence in action\n\n```python\nprint(2 + 3 * 4)      # 14\nprint((2 + 3) * 4)    # 20\nprint(2 ** 3 + 1)     # 9   <- power first (8), then +1\n```\n\n---\n\n## Common mistakes\n\n- **Using `=` when you mean `==`.** `if age = 18:` is an error. To *compare*, use two\n  equals signs: `if age == 18:`. One sign stores, two signs ask.\n- **Expecting `/` to give a whole number.** `10 / 2` is `4.0`, a float. If you want the\n  whole number `5`, use floor division: `10 // 2`.\n- **Forgetting precedence.** `2 + 3 * 4` is `14`, not `20`, because `*` runs before `+`.\n  If you wanted 20, write `(2 + 3) * 4`. When unsure, add parentheses.\n\n---\n\n## Try it\n\nOpen **`labs/02-operators/`** and read its `README.md`. You'll complete the functions in\n`operators.py`, then run:\n\n```bash\npytest labs/02-operators/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What is the result of `7 / 2`?",
+          "options": {
+            "A": "`3`",
+            "B": "`3.5`",
+            "C": "`4`",
+            "D": "`1`"
+          },
+          "correct": "B",
+          "explanation": "`/` is regular division and always gives a float, so `7 / 2` is `3.5`."
+        },
+        {
+          "n": 2,
+          "question_md": "What does `7 // 2` give?",
+          "options": {
+            "A": "`3.5`",
+            "B": "`3`",
+            "C": "`4`",
+            "D": "`1`"
+          },
+          "correct": "B",
+          "explanation": "`//` is floor division: it drops the decimal part, leaving the whole number `3`."
+        },
+        {
+          "n": 3,
+          "question_md": "What is `7 % 3`?",
+          "options": {
+            "A": "`2`",
+            "B": "`1`",
+            "C": "`2.33`",
+            "D": "`0`"
+          },
+          "correct": "B",
+          "explanation": "`%` is the remainder. 3 goes into 7 twice with `1` left over."
+        },
+        {
+          "n": 4,
+          "question_md": "Which operator tests whether two values are equal?",
+          "options": {
+            "A": "`=`",
+            "B": "`==`",
+            "C": "`!=`",
+            "D": "`=>`"
+          },
+          "correct": "B",
+          "explanation": "Two equals signs (`==`) compare. A single `=` stores a value instead."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `2 ** 4` produce?",
+          "options": {
+            "A": "`8`",
+            "B": "`16`",
+            "C": "`6`",
+            "D": "`24`"
+          },
+          "correct": "B",
+          "explanation": "`**` is power. `2 ** 4` is 2\u00d72\u00d72\u00d72, which is `16`."
+        },
+        {
+          "n": 6,
+          "question_md": "What is the value of `True and False`?",
+          "options": {
+            "A": "`True`",
+            "B": "`False`",
+            "C": "An error",
+            "D": "`None`"
+          },
+          "correct": "B",
+          "explanation": "`and` is `True` only when both sides are true. One side is `False`, so the result is `False`."
+        },
+        {
+          "n": 7,
+          "question_md": "What does `2 + 3 * 4` evaluate to?",
+          "options": {
+            "A": "`20`",
+            "B": "`14`",
+            "C": "`24`",
+            "D": "`9`"
+          },
+          "correct": "B",
+          "explanation": "`*` runs before `+`, so it's `2 + 12`, which is `14`."
+        },
+        {
+          "n": 8,
+          "question_md": "Which expression is `True` only when `age` is at least 18?",
+          "options": {
+            "A": "`age = 18`",
+            "B": "`age >= 18`",
+            "C": "`age > 18`",
+            "D": "`age <= 18`"
+          },
+          "correct": "B",
+          "explanation": "`>=` means \"greater than or equal to,\" so it's `True` for 18 and every age above it. `>` alone would exclude 18."
+        }
+      ],
+      "lab": {
+        "id": "02-operators",
+        "dir": "labs/02-operators",
+        "topic": "operators",
+        "learner_file": "labs/02-operators/operators.py",
+        "solution_file": "labs/02-operators/operators_solution.py",
+        "starter_snapshot": "starters/02-operators__operators.py"
+      }
+    },
+    {
+      "num": "03",
+      "title": "Strings in Depth",
+      "slug": "03-strings",
+      "lesson_md": "# Module 03 \u2014 Strings in Depth\n\n## What you'll learn\n\n- How to reach individual characters with indexing, including from the end\n- How to pull out a piece of a string with slicing\n- How to measure a string's length with `len()`\n- The everyday string methods: `.upper()`, `.lower()`, `.strip()`, `.replace()`,\n  `.split()`, `.count()`\n- A quick recap of f-strings for building messages\n\n---\n\n## The concept\n\nA **string** is text: a row of characters in order, like `\"hello\"`. Because the\ncharacters sit in a fixed order, you can point at any one of them by its position.\n\n### Indexing: reaching one character\n\nEach character has an **index**, a position number. Python counts from **0**, not 1. So\nthe first character is at index `0`:\n\n```\n h  e  l  l  o\n 0  1  2  3  4\n```\n\nYou grab a character with square brackets:\n\n```python\ntext = \"hello\"\ntext[0]    # 'h'\ntext[1]    # 'e'\n```\n\n### Negative indexing: counting from the end\n\nA negative index counts backward from the end. `-1` is the last character, `-2` the one\nbefore it. This saves you from doing math to find the end:\n\n```python\ntext = \"hello\"\ntext[-1]   # 'o'  <- last character\ntext[-2]   # 'l'\n```\n\n### Slicing: pulling out a piece\n\nA **slice** grabs a range of characters. The form is `text[start:stop]`. It starts at\n`start` and stops *just before* `stop` \u2014 the stop position is not included:\n\n```python\ntext = \"hello\"\ntext[1:4]   # 'ell'   <- characters at index 1, 2, 3 (not 4)\ntext[:3]    # 'hel'   <- leave start blank to begin at 0\ntext[2:]    # 'llo'   <- leave stop blank to run to the end\n```\n\nThe \"stop is not included\" rule trips everyone up at first. `text[1:4]` gives you three\ncharacters, indices 1, 2, and 3. A useful check: the length of the slice is\n`stop - start`.\n\n### Length\n\n`len(text)` tells you how many characters are in the string:\n\n```python\nlen(\"hello\")   # 5\nlen(\"\")        # 0   <- the empty string has length 0\n```\n\n### Methods: actions a string can do\n\nA **method** is a function attached to a value. You call it with a dot and parentheses:\n`text.upper()`. Here are the ones you'll reach for constantly:\n\n| Method | Does | Example | Result |\n|--------|------|---------|--------|\n| `.upper()` | make uppercase | `\"hi\".upper()` | `\"HI\"` |\n| `.lower()` | make lowercase | `\"HI\".lower()` | `\"hi\"` |\n| `.strip()` | trim spaces from both ends | `\"  hi  \".strip()` | `\"hi\"` |\n| `.replace(a, b)` | swap every `a` for `b` | `\"aaa\".replace(\"a\", \"b\")` | `\"bbb\"` |\n| `.split()` | break into a list of words | `\"a b c\".split()` | `[\"a\", \"b\", \"c\"]` |\n| `.count(x)` | how many times `x` appears | `\"banana\".count(\"a\")` | `3` |\n\nOne thing to know: **strings never change in place.** A method like `.upper()` doesn't\nedit the original; it *returns a new string*. So you keep the result:\n\n```python\nname = \"mason\"\nname.upper()          # returns \"MASON\" but does NOT change name\nprint(name)           # mason   <- unchanged!\nname = name.upper()   # now keep it\nprint(name)           # MASON\n```\n\n### f-strings recap\n\nFrom Module 01: put `f` before the quote and wrap a value in `{braces}` to drop it into\ntext. Combine this with what's above:\n\n```python\nword = \"hello\"\nprint(f\"{word} has {len(word)} letters and starts with {word[0]}.\")\n# hello has 5 letters and starts with h.\n```\n\n---\n\n## Show me\n\n### Indexing and slicing\n\n```python\ntext = \"Python\"\nprint(text[0])      # P\nprint(text[-1])     # n\nprint(text[0:3])    # Pyt\nprint(text[3:])     # hon\nprint(len(text))    # 6\n```\n\n### Methods that transform text\n\n```python\nprint(\"hello\".upper())          # HELLO\nprint(\"LOUD\".lower())           # loud\nprint(\"  spaces  \".strip())     # spaces\nprint(\"cat\".replace(\"c\", \"b\"))  # bat\n```\n\n### Splitting and counting\n\n```python\nprint(\"ada lovelace\".split())   # ['ada', 'lovelace']\nprint(\"banana\".count(\"a\"))      # 3\nprint(\"banana\".count(\"na\"))     # 2\n```\n\n### Building an initials string\n\n```python\nfull_name = \"ada lovelace\"\nwords = full_name.split()       # ['ada', 'lovelace']\nfirst = words[0][0]             # 'a'  <- first word, first letter\nprint(first.upper())            # A\n```\n\n---\n\n## Common mistakes\n\n- **Off-by-one with slicing.** `text[1:4]` does *not* include index 4. It gives indices\n  1, 2, and 3. The stop number is where Python stops, not the last character it keeps.\n- **Expecting a method to change the string.** `name.upper()` returns a new string and\n  leaves `name` alone. You have to save it: `name = name.upper()`.\n- **Reading an index that doesn't exist.** `\"hi\"[5]` crashes with an `IndexError`\n  because there's no character at position 5. Valid indices for `\"hi\"` are 0 and 1 (and\n  -1, -2).\n\n---\n\n## Try it\n\nOpen **`labs/03-strings/`** and read its `README.md`. You'll complete the functions in\n`strings.py`, then run:\n\n```bash\npytest labs/03-strings/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does `\"hello\"[0]` return?",
+          "options": {
+            "A": "`\"e\"`",
+            "B": "`\"h\"`",
+            "C": "`\"o\"`",
+            "D": "`1`"
+          },
+          "correct": "B",
+          "explanation": "Python counts from 0, so index 0 is the first character, `\"h\"`."
+        },
+        {
+          "n": 2,
+          "question_md": "What does `\"hello\"[-1]` return?",
+          "options": {
+            "A": "`\"h\"`",
+            "B": "`\"l\"`",
+            "C": "`\"o\"`",
+            "D": "An error"
+          },
+          "correct": "C",
+          "explanation": "A negative index counts from the end; `-1` is the last character, `\"o\"`."
+        },
+        {
+          "n": 3,
+          "question_md": "What does `\"python\"[1:4]` return?",
+          "options": {
+            "A": "`\"yth\"`",
+            "B": "`\"ytho\"`",
+            "C": "`\"pyth\"`",
+            "D": "`\" python\"`"
+          },
+          "correct": "A",
+          "explanation": "A slice stops just before the stop index, so `[1:4]` gives indices 1, 2, 3 of `\"python\"`, which are `y`, `t`, `h`: `\"yth\"`."
+        },
+        {
+          "n": 4,
+          "question_md": "What is `len(\"cat\")`?",
+          "options": {
+            "A": "`2`",
+            "B": "`3`",
+            "C": "`4`",
+            "D": "`1`"
+          },
+          "correct": "B",
+          "explanation": "`\"cat\"` has three characters, so `len` is `3`."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `\"Hi\".upper()` return?",
+          "options": {
+            "A": "`\"hi\"`",
+            "B": "`\"HI\"`",
+            "C": "`\"Hi\"`",
+            "D": "It changes `\"Hi\"` in place and returns nothing"
+          },
+          "correct": "B",
+          "explanation": "`.upper()` returns a new uppercase string, `\"HI\"`."
+        },
+        {
+          "n": 6,
+          "question_md": "What does `\"a-b-c\".split(\"-\")` return?",
+          "options": {
+            "A": "`\"abc\"`",
+            "B": "`[\"a\", \"b\", \"c\"]`",
+            "C": "`[\"a-b-c\"]`",
+            "D": "`\"a b c\"`"
+          },
+          "correct": "B",
+          "explanation": "`.split(\"-\")` breaks the string at each `-`, giving a list of the pieces."
+        },
+        {
+          "n": 7,
+          "question_md": "What does `\"banana\".count(\"a\")` return?",
+          "options": {
+            "A": "`2`",
+            "B": "`3`",
+            "C": "`6`",
+            "D": "`1`"
+          },
+          "correct": "B",
+          "explanation": "The letter `a` appears three times in `\"banana\"`."
+        },
+        {
+          "n": 8,
+          "question_md": "After `name = \"sam\"` and then `name.upper()`, what does `print(name)` show?",
+          "options": {
+            "A": "`SAM`",
+            "B": "`sam`",
+            "C": "`Sam`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "`.upper()` returns a new string but doesn't change `name`, so it's still `\"sam\"`. You'd need `name = name.upper()` to keep the change."
+        }
+      ],
+      "lab": {
+        "id": "03-strings",
+        "dir": "labs/03-strings",
+        "topic": "strings",
+        "learner_file": "labs/03-strings/strings.py",
+        "solution_file": "labs/03-strings/strings_solution.py",
+        "starter_snapshot": "starters/03-strings__strings.py"
+      }
+    },
+    {
+      "num": "04",
+      "title": "Making Decisions",
+      "slug": "04-making-decisions",
+      "lesson_md": "# Module 04 \u2014 Making Decisions\n\n## What you'll learn\n\n- How to run code only when a condition is true, using `if`\n- How to add more branches with `elif` and a fallback with `else`\n- How to build conditions from comparisons and `and` / `or` / `not`\n- Which values count as \"false\" even though they aren't `False` (truthiness)\n- The `match` statement for picking among fixed options (Python 3.10+)\n\n---\n\n## The concept\n\nSo far your programs run every line, top to bottom. **Decisions** let a program choose:\ndo this *only if* something is true. The tool is the **`if` statement`**.\n\n### if\n\n```python\nage = 20\nif age >= 18:\n    print(\"You can vote.\")\n```\n\nRead it as: \"if `age >= 18` is true, run the indented line.\" The part after `if` is the\n**condition** \u2014 an expression that is `True` or `False`. The indented block under it is\nthe **body**, and it only runs when the condition is true.\n\nTwo rules of shape:\n\n- The line ends with a colon `:`.\n- The body is **indented** (four spaces). Indentation is how Python knows which lines\n  belong to the `if`. Get it wrong and Python complains.\n\n### else: the fallback\n\n`else` runs when the `if` condition is false:\n\n```python\nage = 12\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Too young to vote.\")\n```\n\nExactly one of the two blocks runs, never both.\n\n### elif: more branches\n\n`elif` (\"else if\") lets you check another condition when the earlier ones were false.\nYou can chain as many as you like:\n\n```python\nscore = 75\nif score >= 90:\n    print(\"A\")\nelif score >= 80:\n    print(\"B\")\nelif score >= 70:\n    print(\"C\")\nelse:\n    print(\"D or below\")\n```\n\nPython checks the conditions top to bottom and runs the **first** one that's true, then\nskips the rest. Order matters: put the strictest condition first. This is exactly the\npattern you'll use for the `grade` function in the lab.\n\n### Conditions can combine\n\nA condition is just an expression that's `True` or `False`, so you can use the\ncomparison and boolean operators from Module 02:\n\n```python\nif age >= 13 and age < 65:\n    print(\"Standard ticket.\")\n```\n\n### Truthiness: values that count as false\n\nPython lets you use *any* value as a condition. Most values count as \"true,\" but a few\ncount as \"false\" even though they aren't the word `False`. These **falsy** values are:\n\n- `0` (the number zero)\n- `\"\"` (the empty string)\n- `[]` (the empty list)\n- `None` (a special \"nothing\" value)\n\nEverything else is **truthy**. This lets you write natural checks:\n\n```python\nname = \"\"\nif name:\n    print(f\"Hello, {name}\")\nelse:\n    print(\"No name given.\")     # this runs, because \"\" is falsy\n```\n\n### match: choosing among fixed options\n\nWhen you're comparing one value against several exact possibilities, `match` can read\nmore cleanly than a long `elif` chain. It needs **Python 3.10 or newer**:\n\n```python\ncommand = \"start\"\nmatch command:\n    case \"start\":\n        print(\"Starting up.\")\n    case \"stop\":\n        print(\"Shutting down.\")\n    case _:\n        print(\"Unknown command.\")   # _ is the catch-all, like else\n```\n\nEach `case` is one option. The underscore `_` matches anything that didn't match above.\nYou can always write the same logic with `if`/`elif`/`else`; `match` is just tidier for\nthis shape.\n\n---\n\n## Show me\n\n### A simple if / else\n\n```python\ntemperature = 35\nif temperature > 30:\n    print(\"It's hot.\")    # this runs\nelse:\n    print(\"Not too hot.\")\n```\n\n### An elif chain (first true wins)\n\n```python\nscore = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"      # 85 >= 80 is the first true one, so grade is \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\nprint(grade)         # B\n```\n\n### Truthiness\n\n```python\nitems = []\nif items:\n    print(\"There are items.\")\nelse:\n    print(\"The list is empty.\")   # this runs, [] is falsy\n```\n\n### match\n\n```python\nday = \"Sat\"\nmatch day:\n    case \"Sat\":\n        print(\"Weekend!\")   # this runs\n    case \"Sun\":\n        print(\"Weekend!\")\n    case _:\n        print(\"Weekday.\")\n```\n\n---\n\n## Common mistakes\n\n- **Forgetting the colon or the indentation.** Every `if`, `elif`, and `else` line ends\n  with `:`, and its body must be indented. `if x > 0 print(\"yes\")` is an error; you need\n  the colon and a new indented line.\n- **Wrong order in an elif chain.** If you check `score >= 70` before `score >= 90`,\n  every high score matches the first test and you never reach the `A`. Put the strictest\n  condition first.\n- **Using `=` instead of `==` in a condition.** `if age = 18:` is an error. To compare,\n  use `==`: `if age == 18:`.\n\n---\n\n## Try it\n\nOpen **`labs/04-conditionals/`** and read its `README.md`. You'll complete the functions\nin `conditionals.py`, then run:\n\n```bash\npytest labs/04-conditionals/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "When does the body of an `if` statement run?",
+          "options": {
+            "A": "Always",
+            "B": "Only when the condition is `True`",
+            "C": "Only when the condition is `False`",
+            "D": "Never"
+          },
+          "correct": "B",
+          "explanation": "The indented body runs only when the condition evaluates to `True`."
+        },
+        {
+          "n": 2,
+          "question_md": "In an `if` / `elif` / `elif` / `else` chain, how many blocks run?",
+          "options": {
+            "A": "All of them",
+            "B": "Exactly one",
+            "C": "None",
+            "D": "At least two"
+          },
+          "correct": "B",
+          "explanation": "Python runs the first block whose condition is true, then skips the rest, so exactly one block runs (the `else` counts as the fallback)."
+        },
+        {
+          "n": 3,
+          "question_md": "What does `elif` mean?",
+          "options": {
+            "A": "\"end if\"",
+            "B": "\"else if\" \u2014 check another condition when the earlier ones were false",
+            "C": "\"error if\"",
+            "D": "A typo for `else`"
+          },
+          "correct": "B",
+          "explanation": "`elif` is \"else if\": a new condition checked only when all the earlier ones were false."
+        },
+        {
+          "n": 4,
+          "question_md": "Which of these values is **falsy**?",
+          "options": {
+            "A": "`1`",
+            "B": "`\"hi\"`",
+            "C": "`\"\"`",
+            "D": "`[1, 2]`"
+          },
+          "correct": "C",
+          "explanation": "The empty string `\"\"` is falsy, along with `0`, `[]`, and `None`. The others are truthy."
+        },
+        {
+          "n": 5,
+          "question_md": "What ends every `if` line in Python?",
+          "options": {
+            "A": "A semicolon `;`",
+            "B": "A colon `:`",
+            "C": "A period `.`",
+            "D": "Nothing"
+          },
+          "correct": "B",
+          "explanation": "Every `if`, `elif`, and `else` header ends with a colon."
+        },
+        {
+          "n": 6,
+          "question_md": "Given `score = 95`, which grade does this print?\n```python\nif score >= 70:\n    print(\"C\")\nelif score >= 90:\n    print(\"A\")\n```",
+          "options": {
+            "A": "`A`",
+            "B": "`C`",
+            "C": "Both",
+            "D": "Nothing"
+          },
+          "correct": "B",
+          "explanation": "Conditions are checked top to bottom, and `score >= 70` is true first, so it prints `C` and never reaches the `elif`. That's why order matters: the strict test must come first."
+        },
+        {
+          "n": 7,
+          "question_md": "What does the `_` case do in a `match` statement?",
+          "options": {
+            "A": "Causes an error",
+            "B": "Matches nothing",
+            "C": "Matches anything that didn't match an earlier case (like `else`)",
+            "D": "Repeats the first case"
+          },
+          "correct": "C",
+          "explanation": "The underscore is the catch-all case, the `match` version of `else`."
+        },
+        {
+          "n": 8,
+          "question_md": "Which minimum Python version does `match` need?",
+          "options": {
+            "A": "3.6",
+            "B": "3.8",
+            "C": "3.10",
+            "D": "2.7"
+          },
+          "correct": "C",
+          "explanation": "The `match` statement was added in Python 3.10."
+        }
+      ],
+      "lab": {
+        "id": "04-conditionals",
+        "dir": "labs/04-conditionals",
+        "topic": "conditionals",
+        "learner_file": "labs/04-conditionals/conditionals.py",
+        "solution_file": "labs/04-conditionals/conditionals_solution.py",
+        "starter_snapshot": "starters/04-conditionals__conditionals.py"
+      }
+    },
+    {
+      "num": "05",
+      "title": "Loops",
+      "slug": "05-loops",
+      "lesson_md": "# Module 05 \u2014 Loops\n\n## What you'll learn\n\n- How to repeat work with a `for` loop over `range()` and over a list\n- How to keep looping while a condition holds with a `while` loop\n- How to control a count with `range(start, stop, step)`\n- How to leave a loop early with `break` and skip an item with `continue`\n- The accumulator pattern: building up a running total\n- How to avoid loops that never end\n\n---\n\n## The concept\n\nA **loop** repeats a block of code. Instead of writing the same line ten times, you\nwrite it once and tell Python to run it ten times. There are two kinds you'll use every\nday: `for` and `while`.\n\n### for loops over a range\n\n`range(n)` produces the numbers `0, 1, 2, ... up to but not including n`. A `for` loop\nwalks through them one at a time:\n\n```python\nfor i in range(3):\n    print(i)\n# 0\n# 1\n# 2\n```\n\nRead it as: \"for each number `i` in the range, run the indented body.\" The variable `i`\ntakes each value in turn. Like `if`, the header ends with `:` and the body is indented.\n\nNote `range(3)` stops *before* 3, just like slicing stops before its end number. So\n`range(3)` gives `0, 1, 2` \u2014 three numbers.\n\n### range with start, stop, and step\n\n`range` can take more numbers: `range(start, stop, step)`.\n\n```python\nrange(2, 6)       # 2, 3, 4, 5            (start at 2, stop before 6)\nrange(0, 10, 2)   # 0, 2, 4, 6, 8        (step by 2)\nrange(5, 0, -1)   # 5, 4, 3, 2, 1        (count down with a negative step)\n```\n\nThe **step** is how much to jump each time. A negative step counts down \u2014 handy for a\ncountdown.\n\n### for loops over a list\n\nA `for` loop also walks straight through the items of a list, no numbers needed:\n\n```python\nfruits = [\"apple\", \"pear\", \"plum\"]\nfor fruit in fruits:\n    print(fruit)\n# apple\n# pear\n# plum\n```\n\n### The accumulator pattern\n\nA very common job: add up or build up a result as you loop. You start with an empty\ntotal *before* the loop, then update it each time through. This is the **accumulator\npattern**:\n\n```python\ntotal = 0                 # start empty, before the loop\nfor n in range(1, 5):     # 1, 2, 3, 4\n    total = total + n     # add each number to the running total\nprint(total)              # 10\n```\n\nThe same idea works for building a string or a list \u2014 start empty, add on each pass.\n\n### while loops\n\nA `while` loop keeps going *as long as* its condition is true. Use it when you don't\nknow in advance how many times to repeat:\n\n```python\ncount = 3\nwhile count > 0:\n    print(count)\n    count = count - 1     # move toward the stopping point\nprint(\"Liftoff!\")\n# 3\n# 2\n# 1\n# Liftoff!\n```\n\n**The critical line is `count = count - 1`.** Something inside the loop must change so\nthe condition eventually becomes false. If nothing changes, the loop runs forever \u2014 an\n**infinite loop**. If your program seems frozen, you probably have one; press\n`Ctrl + C` to stop it.\n\n### break and continue\n\nTwo keywords steer a loop from the inside:\n\n- **`break`** leaves the loop immediately, skipping anything left.\n- **`continue`** skips the rest of *this* pass and jumps to the next item.\n\n```python\nfor n in range(10):\n    if n == 5:\n        break          # stop the whole loop when n is 5\n    print(n)\n# 0 1 2 3 4\n```\n\n```python\nfor n in range(5):\n    if n % 2 == 0:\n        continue       # skip even numbers\n    print(n)\n# 1 3\n```\n\n---\n\n## Show me\n\n### Summing with an accumulator\n\n```python\ntotal = 0\nfor n in range(1, 6):     # 1, 2, 3, 4, 5\n    total = total + n\nprint(total)              # 15\n```\n\n### Counting down with a negative step\n\n```python\nfor n in range(5, 0, -1):\n    print(n)\n# 5\n# 4\n# 3\n# 2\n# 1\n```\n\n### A while loop with a clear stop\n\n```python\nn = 1\nwhile n <= 4:\n    print(n)\n    n = n + 1\n# 1 2 3 4\n```\n\n### break to stop early\n\n```python\nnumbers = [4, 9, 6, 7]\nfor num in numbers:\n    if num % 3 == 0:\n        print(num)        # 9   <- the first multiple of 3\n        break\n```\n\n---\n\n## Common mistakes\n\n- **The infinite loop.** A `while` loop whose condition never becomes false runs\n  forever. Always change something inside the loop that moves toward the stop, like\n  `count = count - 1`. Press `Ctrl + C` to break out of a stuck program.\n- **Off-by-one with `range`.** `range(1, 5)` is `1, 2, 3, 4` \u2014 it stops *before* 5. If\n  you want to include 5, write `range(1, 6)`.\n- **Resetting the accumulator inside the loop.** Put `total = 0` *before* the loop, not\n  inside it. Inside, it would reset to 0 every pass and you'd lose your running total.\n\n---\n\n## Try it\n\nOpen **`labs/05-loops/`** and read its `README.md`. You'll complete the functions in\n`loops.py`, then run:\n\n```bash\npytest labs/05-loops/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What numbers does `range(3)` produce?",
+          "options": {
+            "A": "`1, 2, 3`",
+            "B": "`0, 1, 2, 3`",
+            "C": "`0, 1, 2`",
+            "D": "`0, 1, 2, 3, 4`"
+          },
+          "correct": "C",
+          "explanation": "`range(3)` starts at 0 and stops before 3, giving `0, 1, 2`."
+        },
+        {
+          "n": 2,
+          "question_md": "What does this print?\n```python\ntotal = 0\nfor n in range(1, 4):\n    total = total + n\nprint(total)\n```",
+          "options": {
+            "A": "`3`",
+            "B": "`6`",
+            "C": "`10`",
+            "D": "`0`"
+          },
+          "correct": "B",
+          "explanation": "The loop adds 1, 2, and 3 to `total`, giving `6`. (`range(1, 4)` stops before 4.)"
+        },
+        {
+          "n": 3,
+          "question_md": "What does `range(0, 10, 2)` produce?",
+          "options": {
+            "A": "`0, 2, 4, 6, 8`",
+            "B": "`0, 2, 4, 6, 8, 10`",
+            "C": "`2, 4, 6, 8, 10`",
+            "D": "`0, 1, 2, ... 10`"
+          },
+          "correct": "A",
+          "explanation": "Start at 0, stop before 10, step by 2: `0, 2, 4, 6, 8`."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `break` do inside a loop?",
+          "options": {
+            "A": "Skips the current item and continues",
+            "B": "Leaves the loop immediately",
+            "C": "Restarts the loop",
+            "D": "Pauses for a second"
+          },
+          "correct": "B",
+          "explanation": "`break` exits the loop right away, skipping any remaining passes."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `continue` do inside a loop?",
+          "options": {
+            "A": "Leaves the loop immediately",
+            "B": "Skips the rest of this pass and moves to the next item",
+            "C": "Ends the program",
+            "D": "Repeats the current item"
+          },
+          "correct": "B",
+          "explanation": "`continue` skips the rest of the current pass and jumps to the next item."
+        },
+        {
+          "n": 6,
+          "question_md": "What causes an infinite `while` loop?",
+          "options": {
+            "A": "Using `range`",
+            "B": "Nothing inside the loop ever makes the condition false",
+            "C": "Using `break`",
+            "D": "Indenting the body"
+          },
+          "correct": "B",
+          "explanation": "If nothing inside the loop moves the condition toward false, it never stops. Change a value each pass to avoid it."
+        },
+        {
+          "n": 7,
+          "question_md": "Where should you put `total = 0` for an accumulator?",
+          "options": {
+            "A": "Inside the loop body",
+            "B": "Before the loop starts",
+            "C": "After the loop ends",
+            "D": "It doesn't matter"
+          },
+          "correct": "B",
+          "explanation": "Initialize the accumulator before the loop. Inside, it would reset every pass and lose the running total."
+        },
+        {
+          "n": 8,
+          "question_md": "What does `range(5, 0, -1)` produce?",
+          "options": {
+            "A": "`5, 4, 3, 2, 1`",
+            "B": "`5, 4, 3, 2, 1, 0`",
+            "C": "`0, 1, 2, 3, 4, 5`",
+            "D": "`1, 2, 3, 4, 5`"
+          },
+          "correct": "A",
+          "explanation": "A negative step counts down: `5, 4, 3, 2, 1`, stopping before 0."
+        }
+      ],
+      "lab": {
+        "id": "05-loops",
+        "dir": "labs/05-loops",
+        "topic": "loops",
+        "learner_file": "labs/05-loops/loops.py",
+        "solution_file": "labs/05-loops/loops_solution.py",
+        "starter_snapshot": "starters/05-loops__loops.py"
+      }
+    },
+    {
+      "num": "06",
+      "title": "Lists & Tuples",
+      "slug": "06-lists-and-tuples",
+      "lesson_md": "# Module 06 \u2014 Lists & Tuples\n\n## What you'll learn\n\n- How to build a list and reach individual items by their position (index)\n- How to grow and shrink a list with `append`, `insert`, `remove`, and `pop`\n- How to count items, loop over them, and slice out a piece\n- How to check if something is in a list with `in`\n- What a tuple is, why it can't change, and how tuple unpacking works\n- A first taste of list comprehensions\n\n---\n\n## The concept\n\nA **list** is an ordered collection of values held in one variable. Instead of ten\nseparate variables for ten scores, you keep them in one list. You make a list with\nsquare brackets `[ ]`, separating items with commas:\n\n```python\nscores = [90, 85, 72, 100]\nnames = [\"Sam\", \"Alex\", \"Ada\"]\n```\n\nA list keeps its items **in order**, and that order matters. Each item has an **index**,\nwhich is its position. Python counts positions starting at **0**, not 1. So in\n`names = [\"Sam\", \"Alex\", \"Ada\"]`, `\"Sam\"` is at index 0, `\"Alex\"` at index 1, and\n`\"Ada\"` at index 2.\n\nYou reach an item by putting its index in square brackets:\n\n```python\nnames[0]    # \"Sam\"\nnames[1]    # \"Alex\"\nnames[-1]   # \"Ada\"   <- negative counts from the end; -1 is the last item\n```\n\nLists can **change**. You can add items, remove items, and replace items. This is called\nbeing **mutable** (\"able to be changed\").\n\nA **tuple** is like a list that can never change. You make one with parentheses `( )`:\n\n```python\npoint = (3, 4)\n```\n\nOnce a tuple exists, you cannot add to it, remove from it, or replace an item. This is\ncalled being **immutable** (\"not able to be changed\"). Tuples are handy when a group of\nvalues belongs together and shouldn't be edited, like a pair of coordinates.\n\nYou still read tuple items by index, exactly like a list:\n\n```python\npoint[0]   # 3\npoint[1]   # 4\n```\n\n---\n\n## Show me\n\n### Building a list and reaching items\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\nprint(fruits[0])     # apple\nprint(fruits[2])     # cherry\nprint(fruits[-1])    # cherry   (last item)\nprint(len(fruits))   # 3        (len = how many items)\n```\n\n`len(...)` tells you how many items a list holds.\n\n### Changing a list\n\n```python\nfruits = [\"apple\", \"banana\"]\n\nfruits.append(\"cherry\")     # add to the end\nprint(fruits)               # ['apple', 'banana', 'cherry']\n\nfruits.insert(0, \"kiwi\")    # put \"kiwi\" at index 0\nprint(fruits)               # ['kiwi', 'apple', 'banana', 'cherry']\n\nfruits.remove(\"banana\")     # remove the first \"banana\"\nprint(fruits)               # ['kiwi', 'apple', 'cherry']\n\nlast = fruits.pop()         # remove AND return the last item\nprint(last)                 # cherry\nprint(fruits)               # ['kiwi', 'apple']\n```\n\n`append` adds to the end. `insert` adds at a position. `remove` deletes by value.\n`pop` deletes by position and hands you the value it removed (the end, if you don't\nsay where).\n\n### Looping over a list\n\n```python\nscores = [90, 85, 100]\nfor score in scores:\n    print(score)\n# 90\n# 85\n# 100\n```\n\nEach time around, `score` becomes the next item.\n\n### Slicing: grabbing a piece\n\nA **slice** copies part of a list. The form is `list[start:stop]`. It starts at `start`\nand stops **just before** `stop`:\n\n```python\nletters = [\"a\", \"b\", \"c\", \"d\", \"e\"]\nprint(letters[1:3])   # ['b', 'c']   (index 1 and 2, not 3)\nprint(letters[:2])    # ['a', 'b']   (from the start)\nprint(letters[2:])    # ['c', 'd', 'e']  (to the end)\n```\n\n### Checking membership with `in`\n\n```python\nfruits = [\"apple\", \"banana\"]\nprint(\"apple\" in fruits)    # True\nprint(\"mango\" in fruits)    # False\n```\n\n### Tuples and unpacking\n\nA tuple groups values that travel together. You can pull them apart into separate\nvariables in one line. This is **tuple unpacking**:\n\n```python\npair = (3, 4)\nx, y = pair        # x gets 3, y gets 4\nprint(x)           # 3\nprint(y)           # 4\n```\n\nThe number of names on the left must match the number of items in the tuple.\n\n### A gentle intro to list comprehensions\n\nA **list comprehension** builds a new list in one line. Read it as \"give me `expression`\nfor each `item` in the list\":\n\n```python\nnumbers = [1, 2, 3, 4]\ndoubled = [n * 2 for n in numbers]\nprint(doubled)     # [2, 4, 6, 8]\n```\n\nYou can add a condition with `if` to keep only some items:\n\n```python\nnumbers = [1, 2, 3, 4]\nevens = [n for n in numbers if n % 2 == 0]\nprint(evens)       # [2, 4]\n```\n\nThat last line reads: \"keep `n` for each `n` in numbers where `n` is even.\" You'll use\nthis exact pattern in the lab.\n\n---\n\n## Common mistakes\n\n- **Counting from 1 instead of 0.** The first item is `list[0]`, not `list[1]`. Asking\n  for `list[3]` of a 3-item list raises `IndexError: list index out of range`, because\n  the valid indexes are 0, 1, and 2.\n- **Trying to change a tuple.** `point = (3, 4)` then `point[0] = 9` raises\n  `TypeError: 'tuple' object does not support item assignment`. Tuples never change.\n  If you need to change it, use a list instead.\n- **Mutating a list when you meant to copy it.** `reverse_list` should return a *new*\n  list and leave the original alone. `items.reverse()` flips the original in place,\n  which is not what you want here. Use `items[::-1]` or `list(reversed(items))` to make\n  a fresh, reversed copy.\n\n---\n\n## Try it\n\nOpen **`labs/06-lists-tuples/`** and read its `README.md`. You'll complete the functions\nin `sequences.py`, then run:\n\n```bash\npytest labs/06-lists-tuples/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "Given `colors = [\"red\", \"green\", \"blue\"]`, what is `colors[1]`?",
+          "options": {
+            "A": "`\"red\"`",
+            "B": "`\"green\"`",
+            "C": "`\"blue\"`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "Indexes start at 0, so index 1 is the second item, `\"green\"`."
+        },
+        {
+          "n": 2,
+          "question_md": "What does `colors[-1]` give for that same list?",
+          "options": {
+            "A": "`\"red\"`",
+            "B": "`\"green\"`",
+            "C": "`\"blue\"`",
+            "D": "An error"
+          },
+          "correct": "C",
+          "explanation": "A negative index counts from the end; `-1` is the last item, `\"blue\"`."
+        },
+        {
+          "n": 3,
+          "question_md": "After `nums = [1, 2]; nums.append(3)`, what is `nums`?",
+          "options": {
+            "A": "`[1, 2]`",
+            "B": "`[3, 1, 2]`",
+            "C": "`[1, 2, 3]`",
+            "D": "`[1, 3, 2]`"
+          },
+          "correct": "C",
+          "explanation": "`append` adds to the end, giving `[1, 2, 3]`."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `len([10, 20, 30])` return?",
+          "options": {
+            "A": "`2`",
+            "B": "`3`",
+            "C": "`30`",
+            "D": "`60`"
+          },
+          "correct": "B",
+          "explanation": "`len` returns the number of items, which is 3."
+        },
+        {
+          "n": 5,
+          "question_md": "What is `[\"a\", \"b\", \"c\", \"d\"][1:3]`?",
+          "options": {
+            "A": "`[\"a\", \"b\"]`",
+            "B": "`[\"b\", \"c\"]`",
+            "C": "`[\"b\", \"c\", \"d\"]`",
+            "D": "`[\"a\", \"b\", \"c\"]`"
+          },
+          "correct": "B",
+          "explanation": "A slice starts at `start` and stops just before `stop`, so `[1:3]` is indexes 1 and 2: `[\"b\", \"c\"]`."
+        },
+        {
+          "n": 6,
+          "question_md": "Why does `point = (3, 4); point[0] = 9` raise an error?",
+          "options": {
+            "A": "`point` has too many items",
+            "B": "Tuples are immutable and can't be changed",
+            "C": "`9` is not a valid number",
+            "D": "You can't index a tuple"
+          },
+          "correct": "B",
+          "explanation": "Tuples are immutable. Assigning to an item raises a `TypeError`."
+        },
+        {
+          "n": 7,
+          "question_md": "After `a, b = (5, 8)`, what is `b`?",
+          "options": {
+            "A": "`5`",
+            "B": "`8`",
+            "C": "`(5, 8)`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "Tuple unpacking matches by position: `a` gets 5, `b` gets 8."
+        },
+        {
+          "n": 8,
+          "question_md": "What does `[n for n in [1, 2, 3, 4] if n % 2 == 0]` produce?",
+          "options": {
+            "A": "`[1, 3]`",
+            "B": "`[2, 4]`",
+            "C": "`[1, 2, 3, 4]`",
+            "D": "`[]`"
+          },
+          "correct": "B",
+          "explanation": "The comprehension keeps only even numbers, giving `[2, 4]`."
+        }
+      ],
+      "lab": {
+        "id": "06-lists-tuples",
+        "dir": "labs/06-lists-tuples",
+        "topic": "sequences",
+        "learner_file": "labs/06-lists-tuples/sequences.py",
+        "solution_file": "labs/06-lists-tuples/sequences_solution.py",
+        "starter_snapshot": "starters/06-lists-tuples__sequences.py"
+      }
+    },
+    {
+      "num": "07",
+      "title": "Dictionaries & Sets",
+      "slug": "07-dictionaries-and-sets",
+      "lesson_md": "# Module 07 \u2014 Dictionaries & Sets\n\n## What you'll learn\n\n- How to store labeled values in a dictionary and look them up by key\n- How to read safely with `.get`, and how to add or update entries\n- How to loop over a dictionary's keys, values, and items\n- How to check if a key is present with `in`\n- What a set is, and when a dictionary beats a set (and the other way around)\n\n---\n\n## The concept\n\nA **dictionary** (or **dict**) stores values you look up by a label instead of by a\nposition. The label is called a **key**, and the thing it points to is the **value**.\nTogether they make a **key-value pair**. You write a dict with curly braces `{ }`, a\ncolon between each key and value, and commas between pairs:\n\n```python\nages = {\"Sam\": 9, \"Alex\": 30}\n```\n\nHere `\"Sam\"` and `\"Alex\"` are keys, and `9` and `30` are their values. You look up a\nvalue by putting its key in square brackets:\n\n```python\nages[\"Sam\"]     # 9\nages[\"Alex\"]   # 30\n```\n\nA list finds things by position (`scores[0]`). A dict finds things by name\n(`ages[\"Sam\"]`). Use a dict when each value has a natural label, like a person's name or\na product's id.\n\nA **set** is a collection of **unique** values with **no order**. You make one with curly\nbraces too, but with only values, no colons:\n\n```python\ncolors = {\"red\", \"green\", \"red\"}\nprint(colors)    # {\"red\", \"green\"}   <- the duplicate \"red\" is gone\n```\n\nA set automatically drops duplicates. That makes it the perfect tool for \"how many\n*different* things are here?\" Sets have no positions, so you can't do `colors[0]`.\n\n**Dict vs set, in one line:** use a dict when you need to look a value up *by a key*; use\na set when you only care about *which unique values exist*.\n\n---\n\n## Show me\n\n### Creating and reading a dict\n\n```python\nprices = {\"apple\": 1.0, \"banana\": 0.5}\n\nprint(prices[\"apple\"])    # 1.0\nprint(len(prices))        # 2   (number of pairs)\n```\n\n### Reading safely with `.get`\n\nLooking up a key that isn't there with square brackets raises an error:\n\n```python\nprices[\"mango\"]   # KeyError: 'mango'\n```\n\n`.get` avoids the crash. It returns the value if the key exists, or a default you choose\nif it doesn't:\n\n```python\nprint(prices.get(\"apple\"))         # 1.0\nprint(prices.get(\"mango\"))         # None        (missing, no default given)\nprint(prices.get(\"mango\", 0))      # 0           (missing, default is 0)\n```\n\n### Adding and updating\n\nAssigning to a key adds it if it's new, or replaces it if it already exists:\n\n```python\nprices = {\"apple\": 1.0}\n\nprices[\"banana\"] = 0.5      # add a new pair\nprint(prices)               # {'apple': 1.0, 'banana': 0.5}\n\nprices[\"apple\"] = 1.25      # update the existing key\nprint(prices)               # {'apple': 1.25, 'banana': 0.5}\n```\n\n### Looping over a dict\n\n```python\nprices = {\"apple\": 1.0, \"banana\": 0.5}\n\nfor fruit in prices.keys():       # just the keys\n    print(fruit)                  # apple, then banana\n\nfor price in prices.values():     # just the values\n    print(price)                  # 1.0, then 0.5\n\nfor fruit, price in prices.items():   # both at once\n    print(f\"{fruit} costs {price}\")\n# apple costs 1.0\n# banana costs 0.5\n```\n\n`.items()` hands you each key-value pair, which you can unpack into two variables.\n\n### Checking for a key with `in`\n\n```python\nprices = {\"apple\": 1.0}\nprint(\"apple\" in prices)    # True\nprint(\"mango\" in prices)    # False\n```\n\n`in` checks the **keys** of a dict.\n\n### Sets and uniqueness\n\n```python\nnums = [1, 2, 2, 3, 3, 3]\nunique = set(nums)\nprint(unique)         # {1, 2, 3}\nprint(len(unique))    # 3   (three distinct values)\n```\n\n`set(...)` turns any list into a set, dropping duplicates. To get a sorted list back,\nwrap it in `sorted(...)`:\n\n```python\nprint(sorted(set([3, 1, 2, 1])))   # [1, 2, 3]\n```\n\n---\n\n## Common mistakes\n\n- **Using `[]` on a missing key.** `prices[\"mango\"]` raises `KeyError` if `\"mango\"`\n  isn't there. When a key might be missing, use `prices.get(\"mango\", default)` instead.\n- **Thinking a set keeps order or positions.** A set has no index, so `colors[0]` raises\n  a `TypeError`. If you need order, sort it into a list: `sorted(colors)`.\n- **Mutating an input dict you meant to leave alone.** `merge` should return a *new*\n  dict and not touch `d1` or `d2`. Build a fresh dict (start from a copy) instead of\n  adding straight into `d1`.\n\n---\n\n## Try it\n\nOpen **`labs/07-dicts-sets/`** and read its `README.md`. You'll complete the functions\nin `mappings.py`, then run:\n\n```bash\npytest labs/07-dicts-sets/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "Given `ages = {\"Sam\": 9}`, what is `ages[\"Sam\"]`?",
+          "options": {
+            "A": "`\"Sam\"`",
+            "B": "`9`",
+            "C": "`{\"Sam\": 9}`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "Looking up the key `\"Sam\"` returns its value, `9`."
+        },
+        {
+          "n": 2,
+          "question_md": "What does `ages.get(\"Ada\", 0)` return when `\"Ada\"` is not a key?",
+          "options": {
+            "A": "`\"Ada\"`",
+            "B": "`None`",
+            "C": "`0`",
+            "D": "A `KeyError`"
+          },
+          "correct": "C",
+          "explanation": "`.get` returns the default (`0`) when the key is missing, instead of raising."
+        },
+        {
+          "n": 3,
+          "question_md": "What does `ages[\"Sam\"]` raise if `\"Sam\"` is not in the dict?",
+          "options": {
+            "A": "`None`",
+            "B": "`KeyError`",
+            "C": "`IndexError`",
+            "D": "`0`"
+          },
+          "correct": "B",
+          "explanation": "Square-bracket lookup on a missing key raises `KeyError`."
+        },
+        {
+          "n": 4,
+          "question_md": "After `d = {\"a\": 1}; d[\"a\"] = 5`, what is `d`?",
+          "options": {
+            "A": "`{\"a\": 1}`",
+            "B": "`{\"a\": 5}`",
+            "C": "`{\"a\": 1, \"a\": 5}`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "Assigning to an existing key replaces its value, giving `{\"a\": 5}`."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `\"a\" in {\"a\": 1, \"b\": 2}` check?",
+          "options": {
+            "A": "Whether `\"a\"` is a value",
+            "B": "Whether `\"a\"` is a key",
+            "C": "Whether the dict has 2 items",
+            "D": "Nothing useful"
+          },
+          "correct": "B",
+          "explanation": "`in` on a dict checks the keys."
+        },
+        {
+          "n": 6,
+          "question_md": "What is `set([1, 1, 2, 3, 3])`?",
+          "options": {
+            "A": "`[1, 1, 2, 3, 3]`",
+            "B": "`{1, 2, 3}`",
+            "C": "`{1, 1, 2, 3, 3}`",
+            "D": "`3`"
+          },
+          "correct": "B",
+          "explanation": "A set drops duplicates and is written with braces: `{1, 2, 3}`."
+        },
+        {
+          "n": 7,
+          "question_md": "Which `for` loop gives you both the key and the value each time?",
+          "options": {
+            "A": "`for k in d:`",
+            "B": "`for v in d.values():`",
+            "C": "`for k, v in d.items():`",
+            "D": "`for k in d.keys():`"
+          },
+          "correct": "C",
+          "explanation": "`.items()` yields each key-value pair, which you unpack into `k, v`."
+        },
+        {
+          "n": 8,
+          "question_md": "You want to know how many *different* answers a survey got. Which tool fits best?",
+          "options": {
+            "A": "A list",
+            "B": "A set",
+            "C": "A single variable",
+            "D": "A tuple"
+          },
+          "correct": "B",
+          "explanation": "A set keeps only distinct values, so its length is the count of different answers."
+        }
+      ],
+      "lab": {
+        "id": "07-dicts-sets",
+        "dir": "labs/07-dicts-sets",
+        "topic": "mappings",
+        "learner_file": "labs/07-dicts-sets/mappings.py",
+        "solution_file": "labs/07-dicts-sets/mappings_solution.py",
+        "starter_snapshot": "starters/07-dicts-sets__mappings.py"
+      }
+    },
+    {
+      "num": "08",
+      "title": "Functions",
+      "slug": "08-functions",
+      "lesson_md": "# Module 08 \u2014 Functions\n\n## What you'll learn\n\n- How to define your own function with `def` and call it\n- The difference between `return` and `print`\n- Default parameter values and keyword arguments\n- How `*args` and `**kwargs` let a function take any number of inputs\n- The difference between local and global scope, plus what a docstring is\n\n---\n\n## The concept\n\nA **function** is a named block of code you can run whenever you want. You write the\nsteps once, give them a name, and then \"call\" that name to run them again and again. You\nhave already been calling functions: `print(...)`, `len(...)`, and `int(...)` are all\nfunctions.\n\nYou make your own with `def` (short for \"define\"):\n\n```python\ndef greet():\n    print(\"Hello!\")\n```\n\nThat block says \"when someone calls `greet`, print Hello!\". Nothing happens until you\n**call** it by writing its name with parentheses:\n\n```python\ngreet()    # Hello!\n```\n\nMost functions need information to work with. You list the names they expect inside the\nparentheses. Those names are **parameters**:\n\n```python\ndef greet(name):\n    print(f\"Hello, {name}!\")\n```\n\nWhen you call the function, the actual values you hand it are **arguments**:\n\n```python\ngreet(\"Sam\")    # \"Sam\" is the argument; name is the parameter\n```\n\nSo a **parameter** is the name in the definition, and an **argument** is the real value\nyou pass in. Same slot, two names depending on where you're standing.\n\n### return vs print\n\n`print` shows something on the screen. `return` hands a value back to the code that\ncalled the function, so it can be stored or used. They are not the same.\n\n```python\ndef add(a, b):\n    return a + b\n\ntotal = add(2, 3)    # total now holds 5\nprint(total)         # 5\n```\n\nIf `add` used `print(a + b)` instead of `return`, you'd see `5` on screen but `total`\nwould be `None`, because the function gave nothing back. **Use `return` when you want a\nresult you can keep working with.**\n\n---\n\n## Show me\n\n### Default parameter values\n\nA parameter can have a default, used when the caller doesn't supply that argument:\n\n```python\ndef greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\nprint(greet(\"Sam\"))               # Hello, Sam!\nprint(greet(\"Sam\", \"Welcome\"))    # Welcome, Sam!\n```\n\nBecause `greeting` has a default, you can leave it out.\n\n### Keyword arguments\n\nYou can pass arguments by name, in any order. These are **keyword arguments**:\n\n```python\ndef greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\nprint(greet(name=\"Sam\", greeting=\"Hi\"))    # Hi, Sam!\nprint(greet(greeting=\"Hi\", name=\"Sam\"))    # Hi, Sam!   (order doesn't matter)\n```\n\n### `*args`: any number of positional arguments\n\nSometimes you don't know how many values the caller will pass. `*args` gathers them all\ninto a tuple:\n\n```python\ndef add_all(*numbers):\n    return sum(numbers)\n\nprint(add_all(1, 2, 3))      # 6\nprint(add_all(10, 20))       # 30\nprint(add_all())             # 0   (empty, sum is 0)\n```\n\nThe `*` is what does the gathering. The name `numbers` is up to you.\n\n### `**kwargs`: any number of keyword arguments\n\n`**kwargs` gathers extra keyword arguments into a dict:\n\n```python\ndef build_profile(name, **details):\n    profile = {\"name\": name}\n    for key, value in details.items():\n        profile[key] = value\n    return profile\n\nprint(build_profile(\"Sam\", age=9, city=\"Reno\"))\n# {'name': 'Sam', 'age': 9, 'city': 'Reno'}\n```\n\n### Local vs global scope\n\nA variable made *inside* a function lives only there. This is its **scope**. Code outside\ncan't see it:\n\n```python\ndef f():\n    secret = 42        # local to f\n    return secret\n\nprint(f())             # 42\nprint(secret)          # NameError: name 'secret' is not defined\n```\n\nA variable made at the top level of your file is **global** and can be read inside\nfunctions. Keep functions simple by passing values in as arguments rather than reaching\nout to globals.\n\n### Docstrings\n\nA **docstring** is a string right under `def` that explains what the function does. Tools\nand people read it:\n\n```python\ndef square(n):\n    \"\"\"Return n multiplied by itself.\"\"\"\n    return n * n\n```\n\n---\n\n## Common mistakes\n\n- **Using `print` when you need `return`.** `print` only shows a value; it doesn't hand\n  one back. If you call a print-only function and try to store the result, you get\n  `None`. Use `return` for any value you want to reuse.\n- **Forgetting the parentheses when calling.** `greet` by itself refers to the function\n  but doesn't run it. You must write `greet()` to actually call it.\n- **Putting a default that can change in the wrong spot.** Parameters with defaults must\n  come *after* ones without: `def f(a, b=1)` is fine, but `def f(a=1, b)` raises a\n  `SyntaxError`. Required parameters first, defaults last.\n\n---\n\n## Try it\n\nOpen **`labs/08-functions/`** and read its `README.md`. You'll complete the functions in\n`functions.py`, then run:\n\n```bash\npytest labs/08-functions/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What keyword defines a function?",
+          "options": {
+            "A": "`func`",
+            "B": "`def`",
+            "C": "`function`",
+            "D": "`define`"
+          },
+          "correct": "B",
+          "explanation": "`def` defines a function."
+        },
+        {
+          "n": 2,
+          "question_md": "In `def greet(name):`, what is `name`?",
+          "options": {
+            "A": "An argument",
+            "B": "A parameter",
+            "C": "A return value",
+            "D": "A docstring"
+          },
+          "correct": "B",
+          "explanation": "`name` in the definition is a parameter. The value you pass when calling is the argument."
+        },
+        {
+          "n": 3,
+          "question_md": "What's the key difference between `return` and `print`?",
+          "options": {
+            "A": "Nothing, they're the same",
+            "B": "`return` hands a value back to the caller; `print` only displays it",
+            "C": "`print` is faster",
+            "D": "`return` shows text in color"
+          },
+          "correct": "B",
+          "explanation": "`return` hands a value back so the caller can use it; `print` only shows it."
+        },
+        {
+          "n": 4,
+          "question_md": "Given `def greet(name, greeting=\"Hello\"):`, what does `greet(\"Sam\")` return?",
+          "options": {
+            "A": "`\"Sam, Hello!\"`",
+            "B": "`\"Hello, Sam!\"`",
+            "C": "`\"Hello!\"`",
+            "D": "An error"
+          },
+          "correct": "B",
+          "explanation": "`greeting` defaults to `\"Hello\"`, so the result is `\"Hello, Sam!\"`."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `*numbers` collect the positional arguments into?",
+          "options": {
+            "A": "A list",
+            "B": "A dict",
+            "C": "A tuple",
+            "D": "A string"
+          },
+          "correct": "C",
+          "explanation": "`*args` gathers positional arguments into a tuple."
+        },
+        {
+          "n": 6,
+          "question_md": "What does `**details` collect keyword arguments into?",
+          "options": {
+            "A": "A list",
+            "B": "A tuple",
+            "C": "A set",
+            "D": "A dict"
+          },
+          "correct": "D",
+          "explanation": "`**kwargs` gathers keyword arguments into a dict."
+        },
+        {
+          "n": 7,
+          "question_md": "A variable created inside a function is...",
+          "options": {
+            "A": "Global, visible everywhere",
+            "B": "Local, visible only inside that function",
+            "C": "Saved to a file",
+            "D": "Deleted immediately"
+          },
+          "correct": "B",
+          "explanation": "Variables made inside a function are local to it and can't be seen outside."
+        },
+        {
+          "n": 8,
+          "question_md": "What is a docstring?",
+          "options": {
+            "A": "A comment that Python runs",
+            "B": "A string just under `def` that describes the function",
+            "C": "The function's return value",
+            "D": "A type of error"
+          },
+          "correct": "B",
+          "explanation": "A docstring is the string right under `def` that documents the function."
+        }
+      ],
+      "lab": {
+        "id": "08-functions",
+        "dir": "labs/08-functions",
+        "topic": "functions",
+        "learner_file": "labs/08-functions/functions.py",
+        "solution_file": "labs/08-functions/functions_solution.py",
+        "starter_snapshot": "starters/08-functions__functions.py"
+      }
+    },
+    {
+      "num": "09",
+      "title": "Errors & Exceptions",
+      "slug": "09-errors-and-exceptions",
+      "lesson_md": "# Module 09 \u2014 Errors & Exceptions\n\n## What you'll learn\n\n- What a traceback is and how to read it from the bottom up\n- The common exceptions you'll meet and what each one means\n- How to catch an error with `try` / `except` so your program keeps going\n- How `else` and `finally` round out a `try` block\n- How to raise your own error with `raise`\n\n---\n\n## The concept\n\nWhen Python hits a problem it can't handle, it stops and reports an **exception**: an\nerror with a name and a message. You've already met a few. An exception isn't a bug in\nPython; it's Python telling you something went wrong and exactly where.\n\nThe report Python prints is called a **traceback**. It can look scary, but it's just a\ntrail showing how Python got to the problem. **Read it from the bottom up.** The last\nline is the most useful: it names the exception and describes it.\n\n```\nTraceback (most recent call last):\n  File \"app.py\", line 3, in <module>\n    print(10 / 0)\nZeroDivisionError: division by zero\n```\n\nThe bottom line says `ZeroDivisionError: division by zero`. That's your answer: you\ndivided by zero on line 3. Start at the bottom, then look up only if you need more\ncontext.\n\n### Common exceptions\n\nYou'll see these again and again:\n\n| Exception | Happens when... | Example |\n|-----------|-----------------|---------|\n| `ValueError` | the value is the wrong *kind* for the operation | `int(\"hello\")` |\n| `TypeError` | the *type* is wrong | `\"a\" + 5` |\n| `IndexError` | a list index is out of range | `[1, 2][5]` |\n| `KeyError` | a dict key doesn't exist | `{\"a\": 1}[\"b\"]` |\n| `ZeroDivisionError` | you divide by zero | `10 / 0` |\n\nKnowing the name tells you what to fix.\n\n---\n\n## Show me\n\n### try / except: catch a problem and keep going\n\nA `try` block holds code that might fail. The `except` block runs only if that failure\nhappens, instead of crashing the program:\n\n```python\ntry:\n    number = int(\"hello\")\nexcept ValueError:\n    number = 0\n\nprint(number)    # 0\n```\n\nPython tries `int(\"hello\")`, which raises `ValueError`. The `except ValueError` catches\nit and sets `number = 0`. The program keeps running.\n\n### Catch a *specific* exception\n\nName the exception you expect. That way you don't accidentally hide a different problem:\n\n```python\ntry:\n    value = my_list[index]\nexcept IndexError:\n    value = None\n```\n\nThis catches an out-of-range index but lets other, unexpected errors surface normally.\nCatching the specific exception is better than a bare `except:` that swallows everything.\n\n### try / except / else / finally\n\n- `else` runs if the `try` block had **no** error.\n- `finally` runs **no matter what**, error or not. It's for cleanup.\n\n```python\ntry:\n    result = 10 / 2\nexcept ZeroDivisionError:\n    print(\"can't divide by zero\")\nelse:\n    print(f\"result is {result}\")    # result is 5.0\nfinally:\n    print(\"done\")                   # done\n```\n\nWith no error, you'll see `result is 5.0` then `done`. If the division had failed, you'd\nsee the error message then `done`. `finally` always runs.\n\n### Raising your own error\n\nSometimes *your* code should refuse bad input. You signal that with `raise`, choosing the\nexception type and message:\n\n```python\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"cannot divide by zero\")\n    return a / b\n\ndivide(10, 0)    # ValueError: cannot divide by zero\n```\n\n`raise` stops the function and reports the exception, just like a built-in one would. The\ncaller can then catch it with `try` / `except` if they choose.\n\n---\n\n## Common mistakes\n\n- **Panicking at the traceback instead of reading the bottom line.** The last line names\n  the exact problem. Read bottom-up; the rest is just the path Python took to get there.\n- **Catching everything with a bare `except:`.** `except:` hides real bugs because it\n  swallows every error, even ones you didn't expect. Catch the specific type, like\n  `except ValueError:`, so surprises still show up.\n- **Forgetting that `int(\"12.5\")` raises `ValueError`.** Only whole-number text converts\n  cleanly with `int`. `int(\"12.5\")` fails. Wrap the conversion in `try` / `except\n  ValueError` when the text might not be a clean integer.\n\n---\n\n## Try it\n\nOpen **`labs/09-errors/`** and read its `README.md`. You'll complete the functions in\n`errors.py`, then run:\n\n```bash\npytest labs/09-errors/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "When reading a traceback, which line is usually the most useful?",
+          "options": {
+            "A": "The first line",
+            "B": "The middle line",
+            "C": "The last (bottom) line",
+            "D": "None of them"
+          },
+          "correct": "C",
+          "explanation": "Read tracebacks bottom-up; the last line names the exception and its message."
+        },
+        {
+          "n": 2,
+          "question_md": "Which exception does `int(\"hello\")` raise?",
+          "options": {
+            "A": "`TypeError`",
+            "B": "`ValueError`",
+            "C": "`KeyError`",
+            "D": "`IndexError`"
+          },
+          "correct": "B",
+          "explanation": "`int(\"hello\")` can't become a number, so it raises `ValueError`."
+        },
+        {
+          "n": 3,
+          "question_md": "Which exception does `{\"a\": 1}[\"b\"]` raise?",
+          "options": {
+            "A": "`IndexError`",
+            "B": "`ValueError`",
+            "C": "`KeyError`",
+            "D": "`ZeroDivisionError`"
+          },
+          "correct": "C",
+          "explanation": "Looking up a missing dict key raises `KeyError`."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `10 / 0` raise?",
+          "options": {
+            "A": "`ValueError`",
+            "B": "`ZeroDivisionError`",
+            "C": "`TypeError`",
+            "D": "Nothing, it returns 0"
+          },
+          "correct": "B",
+          "explanation": "Dividing by zero raises `ZeroDivisionError`."
+        },
+        {
+          "n": 5,
+          "question_md": "In a `try` block, when does the `except` block run?",
+          "options": {
+            "A": "Always",
+            "B": "Only if the `try` block raises a matching exception",
+            "C": "Only if the `try` block succeeds",
+            "D": "Never"
+          },
+          "correct": "B",
+          "explanation": "`except` runs only when the `try` block raises a matching exception."
+        },
+        {
+          "n": 6,
+          "question_md": "When does a `finally` block run?",
+          "options": {
+            "A": "Only on success",
+            "B": "Only on error",
+            "C": "No matter what, error or not",
+            "D": "Only if there's no `except`"
+          },
+          "correct": "C",
+          "explanation": "`finally` always runs, whether or not an error happened. It's for cleanup."
+        },
+        {
+          "n": 7,
+          "question_md": "What does `raise ValueError(\"nope\")` do?",
+          "options": {
+            "A": "Prints \"nope\" and continues",
+            "B": "Stops and reports a `ValueError` with the message \"nope\"",
+            "C": "Returns \"nope\"",
+            "D": "Nothing"
+          },
+          "correct": "B",
+          "explanation": "`raise` stops execution and reports the chosen exception and message."
+        },
+        {
+          "n": 8,
+          "question_md": "Why prefer `except ValueError:` over a bare `except:`?",
+          "options": {
+            "A": "It's shorter",
+            "B": "It catches more errors",
+            "C": "It catches only the error you expect, so other bugs still surface",
+            "D": "It runs faster"
+          },
+          "correct": "C",
+          "explanation": "Catching the specific exception leaves unexpected errors visible instead of silently swallowing them."
+        }
+      ],
+      "lab": {
+        "id": "09-errors",
+        "dir": "labs/09-errors",
+        "topic": "errors",
+        "learner_file": "labs/09-errors/errors.py",
+        "solution_file": "labs/09-errors/errors_solution.py",
+        "starter_snapshot": "starters/09-errors__errors.py"
+      }
+    },
+    {
+      "num": "10",
+      "title": "Files & the Filesystem",
+      "slug": "10-files-and-the-filesystem",
+      "lesson_md": "# Module 10 \u2014 Files & the Filesystem\n\n## What you'll learn\n\n- How to open a file with `open()` and what the modes `r`, `w`, and `a` mean\n- The `with open(...) as f:` pattern, and why it's the safe way to work with files\n- How to read a file three ways: `read()`, `readlines()`, and looping over lines\n- How to write to a file, and how newline characters (`\\n`) actually work\n- The basics of `pathlib.Path` for reading and writing files in one short line\n\n---\n\n## The concept\n\nA **file** is data saved on disk so it survives after your program ends. Your variables\nvanish when the program stops. A file stays. Reading a file pulls its contents into your\nprogram; writing a file puts your program's data onto disk.\n\nTo work with a file, you first **open** it. `open()` gives you a *file object* \u2014 a handle\nyou use to read or write. When you're done, the file must be **closed** so the system\nfrees it and your writes are actually saved.\n\n### Modes: what you plan to do with the file\n\nWhen you open a file you pass a **mode**, a short string that says what you intend:\n\n| Mode | Means | If the file exists | If it doesn't |\n|------|-------|--------------------|---------------|\n| `\"r\"` | read | reads it | error |\n| `\"w\"` | write | **erases it first**, then writes | creates it |\n| `\"a\"` | append | adds to the end | creates it |\n\nThe big one to respect is `\"w\"`. It wipes the file the moment you open it. If you want to\nadd to a file without destroying what's there, use `\"a\"`.\n\n### The `with` pattern: open and auto-close\n\nYou *could* call `f.close()` yourself, but it's easy to forget, and if your code crashes\nbefore reaching it, the file stays open. So Python gives you a cleaner way: the **`with`\nstatement**. It closes the file for you automatically, even if something goes wrong.\n\n```python\nwith open(\"notes.txt\", \"r\") as f:\n    text = f.read()\n# the file is closed here, automatically\n```\n\nRead it as: \"open notes.txt as `f`, do the indented work, then close it.\" This is the\nstandard way to handle files. Use it every time.\n\n### Reading: three ways\n\nOnce a file is open for reading, you have choices:\n\n- `f.read()` \u2014 the **whole file** as one big string.\n- `f.readlines()` \u2014 a **list of lines**, each line still carrying its `\\n`.\n- looping `for line in f:` \u2014 one line at a time, easy on memory for big files.\n\n### Newlines: the invisible character\n\nA text file is just characters. The thing that ends one line and starts the next is a\nsingle character written `\\n`, the **newline**. You usually don't see it, but it's there.\nWhen you write lines yourself, *you* add the `\\n`:\n\n```python\nf.write(\"first\\n\")\nf.write(\"second\\n\")\n```\n\nThat makes a file with two lines. Without the `\\n`, both pieces land on the same line.\n\n### pathlib: the modern, shorter way\n\n`pathlib.Path` represents a file or folder path as an object with handy methods. For\nsimple read-and-write jobs it's shorter than `open()` and harder to get wrong:\n\n```python\nfrom pathlib import Path\n\np = Path(\"notes.txt\")\np.write_text(\"hello\\n\")        # writes the whole string (creates/overwrites)\ncontents = p.read_text()       # reads the whole file as a string\np.exists()                     # True if the file is there, else False\n```\n\n`write_text` and `read_text` open, do the work, and close the file for you in one call.\nPrefer `with open(...)` when you need line-by-line control, and `Path` for quick whole-file\nreads and writes.\n\n---\n\n## Show me\n\n### Writing a file, then reading it back\n\n```python\nwith open(\"greeting.txt\", \"w\") as f:\n    f.write(\"Hello\\n\")\n    f.write(\"World\\n\")\n\nwith open(\"greeting.txt\", \"r\") as f:\n    print(f.read())\n# Hello\n# World\n#\n```\n\n(The blank line at the end is the trailing `\\n` after `World`.)\n\n### Reading line by line\n\n```python\nwith open(\"greeting.txt\", \"r\") as f:\n    for line in f:\n        print(line.strip())\n# Hello\n# World\n```\n\n`line.strip()` removes the trailing `\\n` (and any stray spaces) so the print is clean.\n\n### Appending without erasing\n\n```python\nwith open(\"greeting.txt\", \"a\") as f:\n    f.write(\"Again\\n\")\n\nwith open(\"greeting.txt\", \"r\") as f:\n    print(f.read())\n# Hello\n# World\n# Again\n#\n```\n\nThe original two lines stayed; `\"a\"` added to the end.\n\n### pathlib in one line each\n\n```python\nfrom pathlib import Path\n\np = Path(\"quick.txt\")\np.write_text(\"one line\\n\")\nprint(p.read_text())     # one line\nprint(p.exists())        # True\n```\n\n---\n\n## Common mistakes\n\n- **Opening with `\"w\"` when you meant `\"a\"`.** `\"w\"` erases the file the instant you open\n  it. If your saved data keeps disappearing, you probably used write mode where you wanted\n  append mode. Use `\"a\"` to add to the end.\n- **Forgetting the `\\n`.** `f.write(\"a\")` then `f.write(\"b\")` gives one line, `ab`. To get\n  separate lines, write `\"a\\n\"` and `\"b\\n\"`. The newline is your job.\n- **Forgetting to close (so writes don't save).** If you open without `with` and never\n  call `f.close()`, your writes may not reach the disk. Use `with open(...) as f:` and the\n  closing is handled for you.\n\n---\n\n## Try it\n\nOpen **`labs/10-files/`** and read its `README.md`. You'll complete the functions in\n`files_lab.py`, then run:\n\n```bash\npytest labs/10-files/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does opening a file in `\"w\"` mode do to an existing file?",
+          "options": {
+            "A": "Adds to the end of it",
+            "B": "Erases its contents first, then writes",
+            "C": "Reads it",
+            "D": "Leaves it untouched and raises an error"
+          },
+          "correct": "B",
+          "explanation": "`\"w\"` truncates (erases) the file the moment it opens, then writes fresh. Use `\"a\"` if you want to keep what's there."
+        },
+        {
+          "n": 2,
+          "question_md": "Why is `with open(...) as f:` preferred over a plain `open()`?",
+          "options": {
+            "A": "It runs faster",
+            "B": "It closes the file automatically, even if an error happens",
+            "C": "It encrypts the file",
+            "D": "It allows reading and writing at the same time"
+          },
+          "correct": "B",
+          "explanation": "`with` guarantees the file is closed when the block ends, even if your code raises an error partway through."
+        },
+        {
+          "n": 3,
+          "question_md": "Which character marks the end of a line in a text file?",
+          "options": {
+            "A": "`\\t`",
+            "B": "`\\n`",
+            "C": "`\\end`",
+            "D": "A space"
+          },
+          "correct": "B",
+          "explanation": "`\\n`, the newline character, ends one line and starts the next."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `f.readlines()` return?",
+          "options": {
+            "A": "The whole file as one string",
+            "B": "A list of lines, each still ending in `\\n`",
+            "C": "The number of lines",
+            "D": "The first line only"
+          },
+          "correct": "B",
+          "explanation": "`readlines()` gives you a list of the lines, and each one still carries its trailing `\\n`."
+        },
+        {
+          "n": 5,
+          "question_md": "Which mode adds to the end of a file without erasing it?",
+          "options": {
+            "A": "`\"r\"`",
+            "B": "`\"w\"`",
+            "C": "`\"a\"`",
+            "D": "`\"x\"`"
+          },
+          "correct": "C",
+          "explanation": "`\"a\"` is append mode: it adds to the end and creates the file if it's missing."
+        },
+        {
+          "n": 6,
+          "question_md": "What does `Path(\"notes.txt\").read_text()` do?",
+          "options": {
+            "A": "Returns the whole file contents as a string",
+            "B": "Returns a list of lines",
+            "C": "Deletes the file",
+            "D": "Checks whether the file exists"
+          },
+          "correct": "A",
+          "explanation": "`read_text()` opens the file, reads all of it into one string, and closes it."
+        },
+        {
+          "n": 7,
+          "question_md": "After `f.write(\"a\")` then `f.write(\"b\")` (no newlines), what's in the file?",
+          "options": {
+            "A": "`a` and `b` on two lines",
+            "B": "`ab` on one line",
+            "C": "`a b`",
+            "D": "Nothing"
+          },
+          "correct": "B",
+          "explanation": "Without `\\n`, the two writes land on the same line as `ab`. The newline is something you add yourself."
+        },
+        {
+          "n": 8,
+          "question_md": "What does `Path(\"notes.txt\").exists()` return when the file is missing?",
+          "options": {
+            "A": "`None`",
+            "B": "An error",
+            "C": "`False`",
+            "D": "`\"\"`"
+          },
+          "correct": "C",
+          "explanation": "`exists()` returns the boolean `False` when the path isn't there (and `True` when it is)."
+        }
+      ],
+      "lab": {
+        "id": "10-files",
+        "dir": "labs/10-files",
+        "topic": "files_lab",
+        "learner_file": "labs/10-files/files_lab.py",
+        "solution_file": "labs/10-files/files_lab_solution.py",
+        "starter_snapshot": "starters/10-files__files_lab.py"
+      }
+    },
+    {
+      "num": "11",
+      "title": "Modules, Packages & the Standard Library",
+      "slug": "11-modules-and-packages",
+      "lesson_md": "# Module 11 \u2014 Modules, Packages & the Standard Library\n\n## What you'll learn\n\n- How to bring in code from elsewhere with `import` and `from x import y`\n- What the standard library is, and a tour of `math`, `random`, `statistics`, `collections`\n- How to install third-party packages with `pip` from PyPI\n- A recap of virtual environments and why they keep projects tidy\n- How to split your own code into modules, and what `if __name__ == \"__main__\":` is for\n\n---\n\n## The concept\n\nYou don't have to write everything yourself. Other people have written useful code, and\nPython lets you pull it in. A **module** is just a `.py` file full of code you can reuse.\nA **package** is a folder of modules bundled together.\n\n### Importing\n\nThe `import` statement brings a module's code into your program:\n\n```python\nimport math\nprint(math.sqrt(9))    # 3.0\n```\n\nAfter `import math`, you reach inside it with a dot: `math.sqrt`, `math.pi`. The `math.`\npart tells Python where the name lives.\n\nIf you only want one thing from a module, use `from ... import ...`:\n\n```python\nfrom math import sqrt\nprint(sqrt(9))         # 3.0  \u2014 no \"math.\" needed now\n```\n\nBoth are fine. `import math` keeps the name `math.sqrt`, which makes it obvious where\n`sqrt` came from. `from math import sqrt` is shorter. Pick whichever reads more clearly.\n\n### The standard library\n\nThe **standard library** is the big set of modules that ships *with* Python. Nothing to\ninstall \u2014 just `import` and go. A few you'll reach for often:\n\n- **`math`** \u2014 math functions and constants: `math.pi`, `math.sqrt(x)`, `math.floor(x)`.\n- **`random`** \u2014 random choices: `random.choice(items)`, `random.randint(1, 6)`.\n- **`statistics`** \u2014 averages and spread: `statistics.mean(nums)`, `statistics.median(nums)`.\n- **`collections`** \u2014 handy data containers. `Counter` tallies how often things appear:\n\n```python\nfrom collections import Counter\nvotes = [\"yes\", \"no\", \"yes\", \"yes\"]\nprint(Counter(votes).most_common(1))   # [('yes', 3)]\n```\n\n### Third-party packages: pip and PyPI\n\nSome code isn't in the standard library. It lives on **PyPI** (the Python Package Index),\na public library of packages anyone can publish. You install from it with **`pip`**, the\npackage installer that came with Python:\n\n```bash\npip install requests\n```\n\nNow `import requests` works in your program. `requests` is a popular package for fetching\nweb pages \u2014 not part of Python itself, but one command away.\n\n### Virtual environments (recap)\n\nA **virtual environment** (the `.venv` you made in setup) is a private box of installed\npackages for one project. When it's active (your prompt shows `(.venv)`), `pip install`\nputs packages there, not into your whole system. So Project A can use one version of a\npackage and Project B another, with no clash. Activate it before you `pip install` or run\nyour code.\n\n### Organizing your own code into modules\n\nYour own files are modules too. If you write `tools.py`:\n\n```python\n# tools.py\ndef shout(text):\n    return text.upper() + \"!\"\n```\n\n...another file in the same folder can use it:\n\n```python\n# main.py\nimport tools\nprint(tools.shout(\"hi\"))    # HI!\n```\n\nSplitting code across files keeps each file short and focused.\n\n### `if __name__ == \"__main__\":`\n\nWhen Python runs a file directly, it sets a hidden variable `__name__` to the string\n`\"__main__\"`. When the file is *imported* instead, `__name__` is the module's name. So\nthis guard means \"only run this part when I'm run directly, not when I'm imported\":\n\n```python\ndef greet(name):\n    return f\"Hi, {name}\"\n\nif __name__ == \"__main__\":\n    print(greet(\"world\"))     # runs only when you do: python thisfile.py\n```\n\nPut your `greet` function above the guard so others can import and reuse it, and put the\n\"run it now\" demo below the guard so it doesn't fire on import.\n\n---\n\n## Show me\n\n### Using a few standard-library modules\n\n```python\nimport math\nimport statistics\nfrom collections import Counter\n\nprint(math.pi)                          # 3.141592653589793\nprint(statistics.mean([2, 4, 6]))       # 4\nprint(Counter(\"banana\").most_common(1)) # [('a', 3)]\n```\n\n### Deterministic randomness with a seed\n\n`random` is random \u2014 unless you give it a **seed**, a starting number that makes it\nrepeat the same sequence every time. Great for tests.\n\n```python\nimport random\n\nr = random.Random(42)\nprint(r.choice([\"a\", \"b\", \"c\"]))   # always the same pick for seed 42\n```\n\n### The main guard in action\n\n```python\n# area.py\nimport math\n\ndef circle_area(r):\n    return math.pi * r ** 2\n\nif __name__ == \"__main__\":\n    print(circle_area(2))     # 12.566370614359172\n```\n\nRun `python area.py` and it prints. `import area` from another file and it stays quiet \u2014\nyou just get the `circle_area` function to use.\n\n---\n\n## Common mistakes\n\n- **Importing a name you didn't import.** `import math` then calling bare `sqrt(9)` fails\n  with `NameError`. Either write `math.sqrt(9)`, or import it by name first:\n  `from math import sqrt`.\n- **Naming your file after a module.** If you name your own file `random.py` or `math.py`,\n  Python imports *your* file instead of the real module, and things break in confusing\n  ways. Give your files their own names, like `tools.py`.\n- **Forgetting to activate the venv before `pip install`.** Without `(.venv)` showing, the\n  package may install somewhere your project can't see, or system-wide. Activate first,\n  then install.\n\n---\n\n## Try it\n\nOpen **`labs/11-modules/`** and read its `README.md`. You'll complete the functions in\n`toolbox.py`, then run:\n\n```bash\npytest labs/11-modules/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What is a module in Python?",
+          "options": {
+            "A": "A type of error",
+            "B": "A `.py` file full of code you can reuse",
+            "C": "A web page",
+            "D": "A kind of variable"
+          },
+          "correct": "B",
+          "explanation": "A module is a `.py` file of reusable code. A folder of modules is a package."
+        },
+        {
+          "n": 2,
+          "question_md": "After `import math`, how do you call its `sqrt` function?",
+          "options": {
+            "A": "`sqrt(9)`",
+            "B": "`math.sqrt(9)`",
+            "C": "`import sqrt(9)`",
+            "D": "`math->sqrt(9)`"
+          },
+          "correct": "B",
+          "explanation": "After `import math`, you reach its contents with a dot: `math.sqrt(9)`."
+        },
+        {
+          "n": 3,
+          "question_md": "What is the standard library?",
+          "options": {
+            "A": "Packages you must install from PyPI",
+            "B": "The set of modules that ships with Python, ready to import",
+            "C": "A folder you create yourself",
+            "D": "Another name for pip"
+          },
+          "correct": "B",
+          "explanation": "The standard library ships with Python \u2014 `import` it directly, no install needed."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `pip install requests` do?",
+          "options": {
+            "A": "Runs requests once",
+            "B": "Downloads and installs the `requests` package from PyPI",
+            "C": "Imports requests into the current file",
+            "D": "Deletes requests"
+          },
+          "correct": "B",
+          "explanation": "`pip` fetches the package from PyPI and installs it into your environment so you can import it."
+        },
+        {
+          "n": 5,
+          "question_md": "Why use a virtual environment?",
+          "options": {
+            "A": "To make code run faster",
+            "B": "To keep each project's installed packages separate",
+            "C": "To connect to the internet",
+            "D": "To format your code"
+          },
+          "correct": "B",
+          "explanation": "A virtual environment isolates one project's packages from another's, so versions never clash."
+        },
+        {
+          "n": 6,
+          "question_md": "What does `from collections import Counter` followed by\n`Counter([1, 1, 2]).most_common(1)` give?",
+          "options": {
+            "A": "`[(1, 2)]`",
+            "B": "`[(2, 1)]`",
+            "C": "`2`",
+            "D": "`[1, 1, 2]`"
+          },
+          "correct": "A",
+          "explanation": "`1` appears twice, so `most_common(1)` returns `[(1, 2)]` \u2014 the value and its count."
+        },
+        {
+          "n": 7,
+          "question_md": "When does the code under `if __name__ == \"__main__\":` run?",
+          "options": {
+            "A": "Only when the file is imported by another file",
+            "B": "Only when the file is run directly",
+            "C": "Never",
+            "D": "Every time, both on import and on direct run"
+          },
+          "correct": "B",
+          "explanation": "`__name__` equals `\"__main__\"` only when the file is run directly, so the guarded code runs then and not on import."
+        },
+        {
+          "n": 8,
+          "question_md": "Why does `random.Random(42).choice(items)` always return the same item?",
+          "options": {
+            "A": "Because `choice` always picks the first item",
+            "B": "Because the fixed seed `42` makes the sequence repeatable",
+            "C": "Because lists are not random",
+            "D": "Because it caches the result"
+          },
+          "correct": "B",
+          "explanation": "A seed sets the starting point of the random sequence. The same seed gives the same sequence every time, which makes the pick deterministic."
+        }
+      ],
+      "lab": {
+        "id": "11-modules",
+        "dir": "labs/11-modules",
+        "topic": "toolbox",
+        "learner_file": "labs/11-modules/toolbox.py",
+        "solution_file": "labs/11-modules/toolbox_solution.py",
+        "starter_snapshot": "starters/11-modules__toolbox.py"
+      }
+    },
+    {
+      "num": "12",
+      "title": "Working with Data Formats",
+      "slug": "12-data-formats",
+      "lesson_md": "# Module 12 \u2014 Working with Data Formats\n\n## What you'll learn\n\n- What JSON is, and how it mirrors Python dicts and lists\n- How to turn data into JSON text with `json.dumps` and back with `json.loads`\n- What CSV is, and how it stores rows of comma-separated values\n- How to write CSV files with `csv.writer` and read them with `csv.DictReader`\n- When to reach for JSON and when to reach for CSV\n\n---\n\n## The concept\n\nYour program holds data in dicts, lists, strings, and numbers. To **save** that data to a\nfile, or **send** it to another program, you need to turn it into plain text in an agreed\nshape. That shape is a **data format**. Two formats cover most everyday needs: JSON and\nCSV.\n\n### JSON: text that looks like Python data\n\n**JSON** (JavaScript Object Notation) is a text format that mirrors Python dicts and\nlists almost exactly. A JSON object looks like a Python dict; a JSON array looks like a\nPython list. This makes it a natural fit for nested data.\n\n```json\n{\"name\": \"Alex\", \"age\": 30, \"hobbies\": [\"chess\", \"code\"]}\n```\n\nThat's a string of text, but you can see the dict inside it. Python's **`json`** module\nconverts between the two:\n\n- `json.dumps(obj)` \u2014 **dump to string**. Takes a Python object, returns JSON **text**.\n- `json.loads(text)` \u2014 **load from string**. Takes JSON text, returns a Python object.\n\nRemember the `s`: `dumps` and `loads` work with **s**trings. (There's also `json.dump`\nand `json.load` without the `s` that work directly with files, but `dumps`/`loads` and\nstrings are all you need here.)\n\nA round trip should give you back what you started with:\n\n```python\nimport json\ndata = {\"a\": 1, \"b\": [2, 3]}\ntext = json.dumps(data)         # '{\"a\": 1, \"b\": [2, 3]}'\nback = json.loads(text)         # {'a': 1, 'b': [2, 3]}\nback == data                    # True\n```\n\n### CSV: a grid of rows and columns\n\n**CSV** (Comma-Separated Values) stores a table: rows of values separated by commas. It's\nwhat spreadsheets export. The first row is usually a **header** naming the columns:\n\n```\nname,age\nAlex,30\nSam,9\n```\n\nThat's two data rows under a header. CSV is flat \u2014 just rows and columns, no nesting \u2014\nwhich makes it perfect for tabular data like a list of people or sales.\n\nPython's **`csv`** module handles the fiddly comma-and-quote details for you:\n\n- `csv.writer(f)` \u2014 write rows. Call `.writerow(list)` for each row.\n- `csv.DictReader(f)` \u2014 read rows. It uses the header row as keys and gives you one\n  **dict per data row**.\n\nWhen you open a file for the `csv` module, pass `newline=\"\"` so line endings behave\ncorrectly across systems:\n\n```python\nwith open(path, \"w\", newline=\"\") as f:\n    ...\n```\n\n### JSON vs CSV: which one?\n\n- Reach for **JSON** when your data is **nested** or mixed \u2014 a dict with lists inside,\n  settings, an API response.\n- Reach for **CSV** when your data is a **flat table** \u2014 rows that all share the same\n  columns, like a spreadsheet of records.\n\n---\n\n## Show me\n\n### JSON round trip\n\n```python\nimport json\n\nperson = {\"name\": \"Sam\", \"age\": 9, \"pets\": [\"cat\"]}\n\ntext = json.dumps(person)\nprint(text)\n# {\"name\": \"Sam\", \"age\": 9, \"pets\": [\"cat\"]}\n\nback = json.loads(text)\nprint(back[\"pets\"])\n# ['cat']\n\nprint(back == person)\n# True\n```\n\n### Writing a CSV file\n\n```python\nimport csv\n\nwith open(\"people.csv\", \"w\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerow([\"name\", \"age\"])     # header\n    writer.writerow([\"Alex\", 30])       # a data row\n    writer.writerow([\"Sam\", 9])          # another row\n```\n\nThe file now holds:\n\n```\nname,age\nAlex,30\nSam,9\n```\n\n### Reading a CSV file into dicts\n\n```python\nimport csv\n\nwith open(\"people.csv\", \"r\", newline=\"\") as f:\n    reader = csv.DictReader(f)\n    for row in reader:\n        print(row)\n# {'name': 'Alex', 'age': '30'}\n# {'name': 'Sam', 'age': '9'}\n```\n\nNotice `'age': '30'` \u2014 a **string**, not the number 30. CSV stores everything as text, so\nconvert with `int(...)` if you need to do math.\n\n---\n\n## Common mistakes\n\n- **Mixing up `dumps` and `loads`.** `dumps` turns a Python object *into* a JSON string;\n  `loads` turns a JSON string *into* a Python object. If you get a `TypeError` or a\n  surprising result, check you're going the right direction.\n- **Expecting numbers back from CSV.** `csv.DictReader` gives every value as a string.\n  `row[\"age\"]` is `\"30\"`, not `30`. Convert with `int(row[\"age\"])` when you need a number.\n- **Forgetting `newline=\"\"` when opening a CSV file.** Without it you can get stray blank\n  lines between rows on some systems. Always open CSV files with `newline=\"\"`.\n\n---\n\n## Try it\n\nOpen **`labs/12-data-formats/`** and read its `README.md`. You'll complete the functions\nin `dataio.py`, then run:\n\n```bash\npytest labs/12-data-formats/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does `json.dumps(obj)` return?",
+          "options": {
+            "A": "A Python dict",
+            "B": "A JSON string",
+            "C": "A file",
+            "D": "A list"
+          },
+          "correct": "B",
+          "explanation": "`dumps` **dumps** a Python object out to a JSON **string** (note the `s` for string)."
+        },
+        {
+          "n": 2,
+          "question_md": "What does `json.loads(text)` return?",
+          "options": {
+            "A": "A JSON string",
+            "B": "The Python object the JSON text describes",
+            "C": "The number of characters",
+            "D": "Nothing"
+          },
+          "correct": "B",
+          "explanation": "`loads` **loads** a JSON string back into the Python object it represents."
+        },
+        {
+          "n": 3,
+          "question_md": "JSON is a natural fit for which kind of data?",
+          "options": {
+            "A": "Flat tables only",
+            "B": "Nested data, like a dict with lists inside",
+            "C": "Images",
+            "D": "Only numbers"
+          },
+          "correct": "B",
+          "explanation": "JSON mirrors dicts and lists, so it handles nested and mixed data well."
+        },
+        {
+          "n": 4,
+          "question_md": "In a CSV file, what usually goes in the first row?",
+          "options": {
+            "A": "The largest value",
+            "B": "A header naming the columns",
+            "C": "A blank line",
+            "D": "The total"
+          },
+          "correct": "B",
+          "explanation": "The first row is typically the header that names each column."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `csv.DictReader` give you for each data row?",
+          "options": {
+            "A": "A list of values",
+            "B": "A dict keyed by the header",
+            "C": "A single string",
+            "D": "A number"
+          },
+          "correct": "B",
+          "explanation": "`DictReader` uses the header as keys and returns one dict per data row."
+        },
+        {
+          "n": 6,
+          "question_md": "After reading a CSV, what type is the value `row[\"age\"]`?",
+          "options": {
+            "A": "`int`",
+            "B": "`float`",
+            "C": "`str`",
+            "D": "`bool`"
+          },
+          "correct": "C",
+          "explanation": "CSV stores everything as text, so values come back as `str`. Convert with `int(...)` for math."
+        },
+        {
+          "n": 7,
+          "question_md": "Which format would you choose for a flat list of records that all share the same\ncolumns?",
+          "options": {
+            "A": "JSON",
+            "B": "CSV",
+            "C": "Neither works",
+            "D": "A `.py` file"
+          },
+          "correct": "B",
+          "explanation": "CSV is built for flat tables where every row shares the same columns."
+        },
+        {
+          "n": 8,
+          "question_md": "What does `json.loads(json.dumps(data))` give you?",
+          "options": {
+            "A": "An error",
+            "B": "The original `data` back",
+            "C": "Always an empty dict",
+            "D": "A JSON string"
+          },
+          "correct": "B",
+          "explanation": "Dumping to JSON and loading it back is a round trip that returns the original data."
+        }
+      ],
+      "lab": {
+        "id": "12-data-formats",
+        "dir": "labs/12-data-formats",
+        "topic": "dataio",
+        "learner_file": "labs/12-data-formats/dataio.py",
+        "solution_file": "labs/12-data-formats/dataio_solution.py",
+        "starter_snapshot": "starters/12-data-formats__dataio.py"
+      }
+    },
+    {
+      "num": "13",
+      "title": "Object-Oriented Programming",
+      "slug": "13-object-oriented-programming",
+      "lesson_md": "# Module 13 \u2014 Object-Oriented Programming\n\n## What you'll learn\n\n- What an object is: data and behavior bundled together\n- The difference between a class (the blueprint) and an instance (a real thing)\n- How `__init__` and `self` set up each new object\n- How attributes hold data and methods do work\n- How `__str__` gives your object a friendly printed form\n\n---\n\n## The concept\n\nSo far you've kept data in variables and written separate functions to act on it. **Object-\noriented programming** (OOP) bundles the two together. An **object** is data *and* the\nbehavior that goes with it, in one package.\n\nThink of a dog. It has data: a name, an age. It has behavior: it can bark, it can sit.\nAn object lets you keep the name, the age, and the bark all in one place, because they\nbelong together.\n\n### Class vs instance\n\nA **class** is a blueprint. It describes what every object of that kind has and can do. An\n**instance** is one actual object built from that blueprint.\n\nThe blueprint \"Dog\" is the class. *Your* dog, Rex, is an instance. My dog, Bella, is\nanother instance. Same blueprint, two separate dogs with their own data.\n\n```python\nclass Dog:\n    ...\n\nrex = Dog()      # an instance\nbella = Dog()    # a different instance\n```\n\n### `__init__` and `self`\n\nWhen you create an instance, Python calls a special method named **`__init__`** (two\nunderscores on each side) to set it up. This is where you give the new object its starting\ndata.\n\nThe first parameter of every method is **`self`** \u2014 it refers to *this particular\ninstance*. You attach data to `self` so each object remembers its own values.\n\n```python\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name      # store name on THIS dog\n        self.age = age        # store age on THIS dog\n\nrex = Dog(\"Rex\", 3)\nprint(rex.name)               # Rex\nprint(rex.age)                # 3\n```\n\n`Dog(\"Rex\", 3)` builds a new dog and runs `__init__` with `name=\"Rex\"` and `age=3`. You\ndon't pass `self` yourself \u2014 Python fills it in with the new object.\n\n### Attributes and methods\n\n- An **attribute** is a piece of data on an object, reached with a dot: `rex.name`.\n- A **method** is a function defined inside the class. It always takes `self` first, so it\n  can use the object's own data:\n\n```python\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        return f\"{self.name} says woof!\"\n\nrex = Dog(\"Rex\")\nprint(rex.bark())             # Rex says woof!\n```\n\n`rex.bark()` runs the `bark` method with `self` set to `rex`, so `self.name` is `\"Rex\"`.\n\n### `__str__`: a friendly printed form\n\nBy default, printing an object shows something ugly like `<__main__.Dog object at 0x...>`.\nDefine a **`__str__`** method to control what `print` shows:\n\n```python\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def __str__(self):\n        return f\"Dog named {self.name}\"\n\nprint(Dog(\"Rex\"))             # Dog named Rex\n```\n\n### Why OOP helps\n\nWhen your program models real things \u2014 a bank account, a shopping cart, a game character \u2014\nOOP lets you keep each thing's data and actions together. The account knows its own balance\n*and* how to deposit. That keeps related code in one place and makes it easier to reason\nabout.\n\n---\n\n## Show me\n\n### A Rectangle class\n\n```python\nclass Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\n    def perimeter(self):\n        return 2 * (self.width + self.height)\n\nr = Rectangle(4, 3)\nprint(r.area())          # 12\nprint(r.perimeter())     # 14\n```\n\n`r` carries its own `width` and `height`. The methods use them through `self`.\n\n### A BankAccount with behavior and a guard\n\n```python\nclass BankAccount:\n    def __init__(self, balance=0):\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            raise ValueError(\"insufficient funds\")\n        self.balance -= amount\n\nacct = BankAccount()       # balance starts at 0\nacct.deposit(100)\nprint(acct.balance)        # 100\nacct.withdraw(30)\nprint(acct.balance)        # 70\n```\n\nTrying to overdraw raises an error instead of going negative:\n\n```python\nacct.withdraw(1000)        # ValueError: insufficient funds\n```\n\nThe account guards its own balance. The rule lives with the data it protects \u2014 that's the\nOOP idea at work.\n\n---\n\n## Common mistakes\n\n- **Forgetting `self` on a method.** Every method's first parameter must be `self`. Writing\n  `def area(width, height):` inside a class will not work the way you expect \u2014 use\n  `def area(self):` and reach the data through `self.width`.\n- **Forgetting `self.` when storing data.** Inside `__init__`, `name = name` just makes a\n  local variable that vanishes. You need `self.name = name` so the value sticks to the\n  object.\n- **Calling a method without parentheses.** `r.area` gives you the method itself, not the\n  result. You must call it: `r.area()`.\n\n---\n\n## Try it\n\nOpen **`labs/13-oop/`** and read its `README.md`. You'll complete the classes in\n`shapes.py`, then run:\n\n```bash\npytest labs/13-oop/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What is an object?",
+          "options": {
+            "A": "A type of number",
+            "B": "Data and behavior bundled together",
+            "C": "A file on disk",
+            "D": "A loop"
+          },
+          "correct": "B",
+          "explanation": "An object packages data together with the behavior that acts on it."
+        },
+        {
+          "n": 2,
+          "question_md": "What's the difference between a class and an instance?",
+          "options": {
+            "A": "They're the same thing",
+            "B": "A class is the blueprint; an instance is one actual object built from it",
+            "C": "An instance is the blueprint; a class is the object",
+            "D": "A class can only make one instance"
+          },
+          "correct": "B",
+          "explanation": "The class is the blueprint; each instance is a separate real object built from that blueprint, with its own data."
+        },
+        {
+          "n": 3,
+          "question_md": "When is `__init__` called?",
+          "options": {
+            "A": "Every time you print the object",
+            "B": "When you create a new instance",
+            "C": "Only when the program ends",
+            "D": "Never automatically"
+          },
+          "correct": "B",
+          "explanation": "`__init__` runs automatically when you create a new instance, to set it up."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `self` refer to inside a method?",
+          "options": {
+            "A": "The class blueprint",
+            "B": "The particular instance the method was called on",
+            "C": "The first argument the user typed",
+            "D": "A global variable"
+          },
+          "correct": "B",
+          "explanation": "`self` is the particular instance the method is running on, so `self.x` reaches that object's own data."
+        },
+        {
+          "n": 5,
+          "question_md": "In `__init__`, which line correctly stores `name` on the object?",
+          "options": {
+            "A": "`name = name`",
+            "B": "`self.name = name`",
+            "C": "`self = name`",
+            "D": "`Dog.name = name`"
+          },
+          "correct": "B",
+          "explanation": "`self.name = name` attaches the value to the object. A plain `name = name` just makes a local variable that disappears."
+        },
+        {
+          "n": 6,
+          "question_md": "What does `r.area` (no parentheses) give you?",
+          "options": {
+            "A": "The result of area",
+            "B": "The method itself, not its result",
+            "C": "An error",
+            "D": "`None`"
+          },
+          "correct": "B",
+          "explanation": "Without parentheses you get the method object itself. Call it with `r.area()` to get the result."
+        },
+        {
+          "n": 7,
+          "question_md": "What does defining `__str__` let you control?",
+          "options": {
+            "A": "How the object is created",
+            "B": "What `print(object)` displays",
+            "C": "How fast methods run",
+            "D": "The object's memory address"
+          },
+          "correct": "B",
+          "explanation": "`__str__` defines what `print(object)` shows, replacing the default ugly form."
+        },
+        {
+          "n": 8,
+          "question_md": "Given the BankAccount above, what happens on `acct.withdraw(1000)` when the balance\nis 70?",
+          "options": {
+            "A": "The balance becomes -930",
+            "B": "Nothing happens",
+            "C": "It raises `ValueError(\"insufficient funds\")`",
+            "D": "It returns 0"
+          },
+          "correct": "C",
+          "explanation": "Withdrawing more than the balance raises `ValueError(\"insufficient funds\")`, so the balance never goes negative."
+        }
+      ],
+      "lab": {
+        "id": "13-oop",
+        "dir": "labs/13-oop",
+        "topic": "shapes",
+        "learner_file": "labs/13-oop/shapes.py",
+        "solution_file": "labs/13-oop/shapes_solution.py",
+        "starter_snapshot": "starters/13-oop__shapes.py"
+      }
+    },
+    {
+      "num": "14",
+      "title": "Automation Track",
+      "slug": "14-automation",
+      "lesson_md": "# Module 14 \u2014 Automation Track\n\n## What you'll learn\n\n- How to look at the files inside a folder with `pathlib`\n- How to make folders, move files, and rename files from code\n- How to organize a messy folder by file type, the way a person would by hand\n- Why sorting your results makes a script behave the same way every time\n\n---\n\n## The concept\n\n**Automation means writing code to do the boring, repetitive jobs you'd otherwise do by\nhand.** Dragging 200 downloaded files into folders. Renaming photos one by one.\nCleaning up a folder every Friday. A short script does it in a blink, the same way each\ntime, without getting bored or making a typo.\n\nPython gives you three tools for this, and you'll use them together:\n\n- **`pathlib`** \u2014 the modern way to talk about files and folders. A `Path` is just an\n  object that points at a place on disk, like `Path(\"downloads/report.txt\")`. You ask\n  the path questions (\"what's your name?\", \"are you a file?\") and it answers.\n- **`os`** \u2014 older, lower-level helpers for the operating system. You'll mostly reach\n  for `pathlib` instead, but `os` is worth knowing exists.\n- **`shutil`** \u2014 short for \"shell utilities\". It does the heavier file jobs like moving\n  and copying.\n\nA few words you'll see:\n\n- **Path** \u2014 an object pointing at a file or folder. `Path(\"notes.txt\")`.\n- **Suffix** \u2014 the file extension, *with* the dot: `report.txt` has suffix `.txt`.\n- **Top-level** \u2014 directly inside a folder, not buried in a subfolder.\n- **`iterdir`** \u2014 \"iterate the directory\", meaning loop over everything inside a folder.\n\nThink of a folder as a drawer full of loose papers. `iterdir` is you flipping through\nthem one at a time. `mkdir` is labeling a new drawer. `shutil.move` is dropping a paper\ninto the right drawer. That's the whole job.\n\n### Why sorting matters\n\nWhen you ask a folder for its contents, the operating system can hand them back in any\norder. On your Mac today it might be alphabetical. On a server tomorrow it might not be.\nIf your script depends on the order, it will behave differently in different places, and\nthat is a nightmare to debug.\n\nThe fix is simple. **Sort your results before you use them.** Then your script does the\nexact same thing every single time, everywhere. Tests love this too, because they can\npredict the answer.\n\n---\n\n## Show me\n\n### Looking inside a folder\n\n```python\nfrom pathlib import Path\n\nfolder = Path(\"downloads\")\n\nfor item in sorted(folder.iterdir()):\n    print(item.name)\n# notes.txt\n# photo.jpg\n# report.txt\n```\n\n`folder.iterdir()` gives you every item directly inside `downloads`. Wrapping it in\n`sorted(...)` puts them in a predictable order. `item.name` is just the filename, with\nno folder in front.\n\n### Finding only the files you want\n\nA `Path` knows its own suffix (the extension, with the dot):\n\n```python\nfrom pathlib import Path\n\nreport = Path(\"downloads/report.txt\")\nprint(report.suffix)   # .txt\nprint(report.name)     # report.txt\nprint(report.stem)     # report\n```\n\nSo to collect every `.txt` file directly in a folder, sorted:\n\n```python\nfrom pathlib import Path\n\nfolder = Path(\"downloads\")\ntexts = sorted(p for p in folder.iterdir() if p.is_file() and p.suffix == \".txt\")\nprint(texts)\n# [PosixPath('downloads/notes.txt'), PosixPath('downloads/report.txt')]\n```\n\n`p.is_file()` skips subfolders, so you only keep actual files.\n\n### Making a folder and moving a file into it\n\n```python\nimport shutil\nfrom pathlib import Path\n\nfolder = Path(\"downloads\")\nsubfolder = folder / \"txt\"        # the / builds a new path: downloads/txt\nsubfolder.mkdir(exist_ok=True)    # make it; exist_ok=True means \"fine if it's already there\"\n\nsource = folder / \"report.txt\"\nshutil.move(str(source), str(subfolder / \"report.txt\"))\n# report.txt now lives in downloads/txt/\n```\n\nTwo things to notice. The `/` operator joins paths, so `folder / \"txt\"` means\n`downloads/txt`. And `mkdir(exist_ok=True)` won't crash if the folder already exists,\nwhich matters when you organize many files into the same subfolder.\n\n### Renaming a file\n\n```python\nfrom pathlib import Path\n\nold = Path(\"downloads/IMG_5523.jpg\")\nnew = old.with_name(\"vacation_1.jpg\")   # same folder, new name\nold.rename(new)\n```\n\n`with_name(...)` keeps the file in the same folder but swaps the filename. `old.rename(new)`\ndoes the actual rename on disk.\n\n---\n\n## Common mistakes\n\n- **Forgetting to skip subfolders.** `folder.iterdir()` returns folders too, not just\n  files. If you try to read or move a folder as if it were a file, things break. Guard\n  with `if p.is_file()`.\n- **Depending on the folder's order.** Without `sorted(...)`, the order your files come\n  back in can change between computers, so your renamed files end up numbered\n  differently. Always sort first when the order matters.\n- **`mkdir` crashing on an existing folder.** Plain `subfolder.mkdir()` raises an error if\n  the folder is already there. When you're organizing many files into the same `txt`\n  folder, only the first one would succeed. Use `mkdir(exist_ok=True)`.\n\n---\n\n## Try it\n\nOpen **`labs/14-automation/`** and read its `README.md`. You'll complete the functions in\n`automation.py`, then run:\n\n```bash\npytest labs/14-automation/\n```\n\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does `folder.iterdir()` give you?",
+          "options": {
+            "A": "Only the `.txt` files in the folder",
+            "B": "Every item directly inside the folder, files and subfolders alike",
+            "C": "The folder's name as text",
+            "D": "A single combined string of all filenames"
+          },
+          "correct": "B",
+          "explanation": "`iterdir()` yields every item directly inside the folder, including subfolders, so you usually filter with `is_file()`."
+        },
+        {
+          "n": 2,
+          "question_md": "For the path `Path(\"photos/beach.jpg\")`, what is its `.suffix`?",
+          "options": {
+            "A": "`beach`",
+            "B": "`jpg`",
+            "C": "`.jpg`",
+            "D": "`photos`"
+          },
+          "correct": "C",
+          "explanation": "`.suffix` includes the dot, so it's `.jpg`. Without the dot you'd use `.suffix[1:]`."
+        },
+        {
+          "n": 3,
+          "question_md": "Why should you wrap `folder.iterdir()` in `sorted(...)`?",
+          "options": {
+            "A": "It makes the script run faster",
+            "B": "So results come back in the same predictable order every time",
+            "C": "It deletes duplicate files",
+            "D": "It is required or Python crashes"
+          },
+          "correct": "B",
+          "explanation": "Folder order isn't guaranteed by the operating system. Sorting makes your script deterministic everywhere."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `folder / \"txt\"` produce?",
+          "options": {
+            "A": "The division of two numbers",
+            "B": "A new path pointing at the `txt` subfolder inside `folder`",
+            "C": "An error, because you can't divide a path",
+            "D": "The text `\"folder/txt\"` with no special meaning"
+          },
+          "correct": "B",
+          "explanation": "The `/` operator on a `Path` joins paths, giving `folder/txt`."
+        },
+        {
+          "n": 5,
+          "question_md": "Why use `mkdir(exist_ok=True)` instead of plain `mkdir()`?",
+          "options": {
+            "A": "It makes the folder hidden",
+            "B": "It won't raise an error if the folder already exists",
+            "C": "It creates the folder faster",
+            "D": "It deletes the folder first"
+          },
+          "correct": "B",
+          "explanation": "`exist_ok=True` makes `mkdir` quietly succeed if the folder already exists, which matters when many files share one destination folder."
+        },
+        {
+          "n": 6,
+          "question_md": "Which check keeps you from treating a subfolder like a file?",
+          "options": {
+            "A": "`p.is_file()`",
+            "B": "`p.sorted()`",
+            "C": "`p.exists() == False`",
+            "D": "`p.name()`"
+          },
+          "correct": "A",
+          "explanation": "`p.is_file()` is `True` only for actual files, so it filters out subfolders."
+        },
+        {
+          "n": 7,
+          "question_md": "What does `shutil.move` do?",
+          "options": {
+            "A": "Renames a file in place only",
+            "B": "Moves a file from one location to another",
+            "C": "Copies a file and keeps both",
+            "D": "Reads a file's contents"
+          },
+          "correct": "B",
+          "explanation": "`shutil.move` relocates a file from a source path to a destination path."
+        },
+        {
+          "n": 8,
+          "question_md": "For `Path(\"downloads/report.txt\")`, what is `.stem`?",
+          "options": {
+            "A": "`report.txt`",
+            "B": "`report`",
+            "C": "`.txt`",
+            "D": "`downloads`"
+          },
+          "correct": "B",
+          "explanation": "`.stem` is the name without the suffix, so `report`. `.name` would keep the `.txt`. </content> </invoke>"
+        }
+      ],
+      "lab": {
+        "id": "14-automation",
+        "dir": "labs/14-automation",
+        "topic": "automation",
+        "learner_file": "labs/14-automation/automation.py",
+        "solution_file": "labs/14-automation/automation_solution.py",
+        "starter_snapshot": "starters/14-automation__automation.py"
+      }
+    },
+    {
+      "num": "15",
+      "title": "Web & APIs Track",
+      "slug": "15-web-and-apis",
+      "lesson_md": "# Module 15 \u2014 Web & APIs Track\n\n## What you'll learn\n\n- What an API is, in plain language, and what \"REST\" means\n- How to fetch data from the web with the `requests` library\n- How to read a JSON response and turn it into Python lists and dicts\n- How to be a polite, well-behaved API user\n\n---\n\n## The concept\n\n**An API is a way for one program to ask another program for data.** API stands for\n*Application Programming Interface*. Forget the long name. The idea is a waiter at a\nrestaurant. You don't walk into the kitchen and cook. You tell the waiter what you want,\nthe waiter brings it back. An API is that waiter between your code and someone else's\ndata.\n\nA few words you'll see:\n\n- **API** \u2014 a doorway another program offers so you can request data from it.\n- **HTTP** \u2014 the language computers use to talk over the web. When you load a web page,\n  your browser speaks HTTP.\n- **GET** \u2014 the HTTP request that means \"give me this data.\" There are others (POST sends\n  data, DELETE removes it), but GET is the one you'll start with.\n- **REST** \u2014 a common, tidy style of API where each kind of thing has its own web address\n  (URL) and you use GET to read it. `/posts` gives you posts, `/posts/1` gives you post\n  number 1. That predictable shape is what people mean by \"REST\".\n- **URL** \u2014 the web address you send your request to, like\n  `https://jsonplaceholder.typicode.com/posts`.\n- **JSON** \u2014 the text format APIs almost always answer in. It looks exactly like Python\n  lists and dicts, which is wonderful for us.\n- **Status code** \u2014 a number the server sends back saying how it went. `200` means OK.\n  `404` means \"not found\". `500` means the server broke.\n\n### What a JSON response looks like\n\nWhen you GET that posts URL, the server replies with text shaped like this:\n\n```json\n[\n  {\"userId\": 1, \"id\": 1, \"title\": \"First post\", \"body\": \"Hello there\"},\n  {\"userId\": 1, \"id\": 2, \"title\": \"Second post\", \"body\": \"More words\"}\n]\n```\n\nThat's a **list of dicts**. Once `requests` hands it to Python, it really is a Python\nlist of Python dicts. Everything you learned about lists and dicts applies. You loop over\nit, you read `post[\"title\"]`, you filter and count. The web part is just *getting* the\ndata. The fun part is *processing* it, and that's all plain Python.\n\n### Being a polite API user\n\nAPIs are run by real people and cost real money. Be a good guest:\n\n- **Don't hammer it.** Don't fire thousands of requests in a tight loop.\n- **Cache when you can.** If you already fetched the data, reuse it instead of asking again.\n- **Check the status code** before trusting the response.\n- **Read the docs and respect rate limits.** Many APIs say \"no more than N requests per\n  minute.\" Honor that.\n\nThis is why the graded lab below uses **saved sample data** instead of the live web. It's\nfast, it works on a plane with no wifi, and it never bothers a real server. You'll still\nsee a real `requests` example here, and an optional live demo you can run yourself.\n\n---\n\n## Show me\n\n### A real request with `requests`\n\nThe `requests` library makes web requests simple. Here's a real one against the public\nJSONPlaceholder test API:\n\n```python\nimport requests\n\nresponse = requests.get(\"https://jsonplaceholder.typicode.com/posts\")\n\nprint(response.status_code)   # 200   <- 200 means it worked\nposts = response.json()       # turn the JSON text into Python data\nprint(type(posts))            # <class 'list'>\nprint(len(posts))             # 100\nprint(posts[0][\"title\"])      # sunt aut facere repellat provident ... (first post's title)\n```\n\nThree pieces do all the work:\n\n- `requests.get(url)` sends the GET request and waits for the reply.\n- `response.status_code` is the number telling you how it went (`200` = OK).\n- `response.json()` parses the JSON text into a Python list or dict.\n\n> **About the lab:** the real call above needs internet and hits a live server. The graded\n> lab instead loads a saved `sample_posts.json` file from the lab folder, so it runs\n> instantly and offline. The data has the same shape, so the code you write works either\n> way. There's also a `live_demo.py` in the lab you can run for real if you're online.\n\n### Processing the data is just Python\n\nOnce you have a list of post dicts, pulling out what you need is ordinary list and dict\nwork:\n\n```python\nposts = [\n    {\"userId\": 1, \"id\": 1, \"title\": \"First\"},\n    {\"userId\": 2, \"id\": 2, \"title\": \"Second\"},\n]\n\ntitles = [post[\"title\"] for post in posts]\nprint(titles)   # ['First', 'Second']\n```\n\n### Building a URL with query parameters\n\nMany APIs let you filter with **query parameters** in the URL, the part after a `?`:\n`/posts?userId=1`. Don't glue these together by hand. Use `urllib.parse.urlencode`, and\nsort the keys so the result is the same every time:\n\n```python\nfrom urllib.parse import urlencode\n\nparams = {\"userId\": 1, \"limit\": 5}\nquery = urlencode(sorted(params.items()))\nprint(query)   # limit=5&userId=1   <- keys sorted alphabetically\n```\n\nSorting matters for the same reason as in the automation track: a predictable result is\ntestable and behaves the same everywhere.\n\n---\n\n## Common mistakes\n\n- **Forgetting to call `.json()`.** `response` is not your data; it's a wrapper around the\n  reply. You must call `response.json()` (or `response.text`) to get the actual content.\n  `response[\"title\"]` is an error.\n- **Trusting a request without checking the status.** A `404` or `500` still returns a\n  response object. If you skip the status check and call `.json()` on an error page, you\n  get confusing crashes. Look at `response.status_code` first.\n- **Hammering the API in a loop.** Sending the same request hundreds of times is slow,\n  rude, and can get you blocked. Fetch once, store the result, and work from the stored\n  copy. That's exactly why this lab uses a saved file.\n\n---\n\n## Try it\n\nOpen **`labs/15-web-apis/`** and read its `README.md`. You'll complete the functions in\n`webapi.py`, then run:\n\n```bash\npytest labs/15-web-apis/\n```\n\nThe tests load the saved `sample_posts.json`, so they're fast and offline. Make it green\nbefore moving on. If you're online and curious, run `python labs/15-web-apis/live_demo.py`\nto see a real request.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "In plain terms, what is an API?",
+          "options": {
+            "A": "A kind of database file",
+            "B": "A way for one program to request data from another program",
+            "C": "A programming language",
+            "D": "A type of web browser"
+          },
+          "correct": "B",
+          "explanation": "An API is a doorway one program offers so another can request its data, like a waiter between you and the kitchen."
+        },
+        {
+          "n": 2,
+          "question_md": "Which HTTP request means \"give me this data\"?",
+          "options": {
+            "A": "GET",
+            "B": "POST",
+            "C": "DELETE",
+            "D": "STORE"
+          },
+          "correct": "A",
+          "explanation": "GET means \"read this.\" POST sends data, DELETE removes it."
+        },
+        {
+          "n": 3,
+          "question_md": "What does the status code `200` mean?",
+          "options": {
+            "A": "The server is down",
+            "B": "The page was not found",
+            "C": "The request worked",
+            "D": "You sent too many requests"
+          },
+          "correct": "C",
+          "explanation": "`200` is the \"OK\" status. `404` is not found, `500` is a server error."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `response.json()` return for the posts endpoint?",
+          "options": {
+            "A": "The raw HTTP headers",
+            "B": "A Python list of dicts",
+            "C": "A single string of HTML",
+            "D": "The status code"
+          },
+          "correct": "B",
+          "explanation": "`.json()` parses the JSON text into Python data; for this endpoint that's a list of dicts."
+        },
+        {
+          "n": 5,
+          "question_md": "What shape is a typical JSON API response of many records?",
+          "options": {
+            "A": "A single number",
+            "B": "A list of dicts",
+            "C": "A plain sentence",
+            "D": "A folder of files"
+          },
+          "correct": "B",
+          "explanation": "Collections of records arrive as a JSON array of objects, which becomes a Python list of dicts."
+        },
+        {
+          "n": 6,
+          "question_md": "Why does the graded lab use a saved JSON file instead of the live API?",
+          "options": {
+            "A": "The live API costs money per call to the student",
+            "B": "So the tests are fast, offline, and don't bother a real server",
+            "C": "Because `requests` doesn't work in tests",
+            "D": "Because JSON can't be sent over the web"
+          },
+          "correct": "B",
+          "explanation": "Saved data keeps the tests fast, offline, and deterministic, and avoids pestering a real server."
+        },
+        {
+          "n": 7,
+          "question_md": "Why call `urlencode(sorted(params.items()))` instead of building the URL by hand?",
+          "options": {
+            "A": "It encrypts the parameters",
+            "B": "It produces a correct, predictable query string every time",
+            "C": "It's the only way to send a GET request",
+            "D": "It removes the parameters entirely"
+          },
+          "correct": "B",
+          "explanation": "`urlencode` handles correct formatting, and sorting the items makes the output identical every run, which is testable."
+        },
+        {
+          "n": 8,
+          "question_md": "Which is the polite way to use an API?",
+          "options": {
+            "A": "Send as many requests as fast as possible",
+            "B": "Fetch once, reuse the result, and respect rate limits",
+            "C": "Ignore the status code",
+            "D": "Never read the documentation"
+          },
+          "correct": "B",
+          "explanation": "Fetch once, reuse, check status codes, and respect rate limits. That's a good API citizen."
+        }
+      ],
+      "lab": {
+        "id": "15-web-apis",
+        "dir": "labs/15-web-apis",
+        "topic": "webapi",
+        "learner_file": "labs/15-web-apis/webapi.py",
+        "solution_file": "labs/15-web-apis/webapi_solution.py",
+        "starter_snapshot": "starters/15-web-apis__webapi.py"
+      }
+    },
+    {
+      "num": "16",
+      "title": "Data & Analysis Track",
+      "slug": "16-data-and-analysis",
+      "lesson_md": "# Module 16 \u2014 Data & Analysis Track\n\n## What you'll learn\n\n- How to read a CSV file into rows you can work with, using `csv.DictReader`\n- Why numbers in a CSV arrive as text, and how to convert them\n- How to sum, average, and group rows to find real answers\n- How to find the biggest group, like your best-selling product\n\n---\n\n## The concept\n\n**A CSV is a spreadsheet saved as plain text.** CSV stands for *comma-separated values*.\nEach line is a row, and commas split the columns. The first line is usually the\n**header**, naming each column:\n\n```\nproduct,amount\nWidget,10.00\nGadget,25.50\n```\n\nThat's a header (`product`, `amount`) and two data rows. CSVs are everywhere: exports\nfrom spreadsheets, bank statements, sales reports. Knowing how to read one and pull\ninsight from it is a genuinely useful skill.\n\nYou can do all of this with Python's **standard library** \u2014 the tools that ship with\nPython, nothing to install. Two modules carry the load:\n\n- **`csv`** \u2014 reads and writes CSV files correctly, handling commas and quoting for you.\n- **`statistics`** \u2014 small math helpers like `mean` (the average).\n\nA few words you'll see:\n\n- **Header** \u2014 the first row, naming the columns.\n- **Row** \u2014 one record, like one sale.\n- **`DictReader`** \u2014 a reader that turns each row into a dict keyed by the header, so you\n  write `row[\"amount\"]` instead of counting commas.\n- **Grouping** \u2014 bucketing rows by a column's value, like \"all the Widget sales together\".\n\n### Numbers come in as text\n\nThis trips up everyone once. When you read a CSV, every value arrives as a **string**,\neven the numbers. `row[\"amount\"]` is `\"25.50\"`, the text, not the number `25.50`. To do\nmath you must convert first:\n\n```python\namount = float(row[\"amount\"])   # now it's a real number you can add\n```\n\nUse `float(...)` for decimals and `int(...)` for whole numbers. Forget this step and\nyou'll get text glued together (`\"10\" + \"25\" == \"1025\"`) instead of a sum.\n\n> **What about pandas?** You may have heard of pandas, a popular library for data work.\n> It's powerful and worth learning later. But you do **not** need it here, and reaching\n> for a big library before you understand the basics hides what's really happening. The\n> standard library does everything in this module. Treat pandas as an optional \"going\n> further\" tool once these fundamentals feel easy.\n\n---\n\n## Show me\n\n### Reading rows as dicts\n\n```python\nimport csv\n\nwith open(\"sales.csv\", newline=\"\") as f:\n    reader = csv.DictReader(f)\n    rows = list(reader)\n\nprint(rows[0])   # {'product': 'Widget', 'amount': '10.00'}\nprint(rows[0][\"product\"])   # Widget\nprint(rows[0][\"amount\"])    # 10.00   <- still text! note the quotes when you print type\n```\n\n`csv.DictReader` reads the header automatically and makes each row a dict. The\n`newline=\"\"` in `open(...)` is the recommended way to open CSV files; it lets the `csv`\nmodule handle line endings correctly.\n\n### Summing and averaging\n\nConvert as you go:\n\n```python\namounts = [float(row[\"amount\"]) for row in rows]\n\ntotal = sum(amounts)\nprint(total)        # 71.50\n\nimport statistics\naverage = statistics.mean(amounts)\nprint(average)      # 23.833333333333332\n```\n\n`sum(...)` adds a list of numbers. `statistics.mean(...)` gives the average. Both need\nreal numbers, which is why you converted with `float(...)` first.\n\n### Grouping by a column\n\nTo total sales per product, walk the rows and add each amount into a dict bucket:\n\n```python\ntotals = {}\nfor row in rows:\n    product = row[\"product\"]\n    amount = float(row[\"amount\"])\n    totals[product] = totals.get(product, 0) + amount\n\nprint(totals)   # {'Widget': 30.0, 'Gadget': 25.5, 'Gizmo': 16.0}\n```\n\n`totals.get(product, 0)` reads the running total so far, or `0` if this is the first time\nyou've seen that product. Then you add the new amount.\n\n### Finding the maximum\n\nTo pick the product with the highest total, use `max` with a `key`:\n\n```python\ntop = max(totals, key=totals.get)\nprint(top)   # Widget\n```\n\n`max(totals, key=totals.get)` looks through the product names and picks the one whose\nvalue (its total) is largest.\n\n---\n\n## Common mistakes\n\n- **Forgetting to convert text to numbers.** `row[\"amount\"]` is a string. `sum` of strings\n  fails, and `\"10\" + \"25\"` gives `\"1025\"`. Always `float(row[\"amount\"])` before math.\n- **Opening the file without `newline=\"\"`.** On some systems this causes blank rows to\n  sneak in. The csv docs say to open with `newline=\"\"`, so do that.\n- **Reading the file twice.** A file reader is used up after one pass. If you loop over the\n  reader and then try again, the second loop is empty. Read into a `list(reader)` once,\n  then reuse that list as many times as you like.\n\n---\n\n## Try it\n\nOpen **`labs/16-data-analysis/`** and read its `README.md`. You'll complete the functions in\n`analysis.py`, then run:\n\n```bash\npytest labs/16-data-analysis/\n```\n\nThe tests load the saved `sales.csv` from the lab folder, so they're fast and offline.\nMake it green before moving on.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What does CSV stand for?",
+          "options": {
+            "A": "Computed source values",
+            "B": "Comma-separated values",
+            "C": "Column storage version",
+            "D": "Common spreadsheet view"
+          },
+          "correct": "B",
+          "explanation": "CSV is comma-separated values: a spreadsheet saved as plain text with commas between columns."
+        },
+        {
+          "n": 2,
+          "question_md": "What does `csv.DictReader` give you for each row?",
+          "options": {
+            "A": "A list of the values, in order",
+            "B": "A single string of the whole line",
+            "C": "A dict keyed by the header column names",
+            "D": "A number"
+          },
+          "correct": "C",
+          "explanation": "`DictReader` uses the header row to make each row a dict, so you access `row[\"amount\"]` by name."
+        },
+        {
+          "n": 3,
+          "question_md": "You read `row[\"amount\"]` and get `\"25.50\"`. What type is it?",
+          "options": {
+            "A": "`float`",
+            "B": "`int`",
+            "C": "`str`",
+            "D": "`bool`"
+          },
+          "correct": "C",
+          "explanation": "Everything read from a CSV is text, so it's a `str` until you convert it."
+        },
+        {
+          "n": 4,
+          "question_md": "Why must you call `float(row[\"amount\"])` before adding amounts?",
+          "options": {
+            "A": "To round the number",
+            "B": "Because the value is text, and text can't be summed as numbers",
+            "C": "To make the program faster",
+            "D": "It isn't necessary"
+          },
+          "correct": "B",
+          "explanation": "The value is a string. You can't sum strings as numbers, so convert with `float(...)` first."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `statistics.mean([10, 20, 30])` return?",
+          "options": {
+            "A": "`60`",
+            "B": "`30`",
+            "C": "`20`",
+            "D": "`10`"
+          },
+          "correct": "C",
+          "explanation": "The mean of 10, 20, and 30 is their sum (60) divided by the count (3), which is 20."
+        },
+        {
+          "n": 6,
+          "question_md": "What does `totals.get(product, 0)` do when `product` isn't in `totals` yet?",
+          "options": {
+            "A": "Raises a KeyError",
+            "B": "Returns `0`",
+            "C": "Returns `None`",
+            "D": "Adds the product with value 1"
+          },
+          "correct": "B",
+          "explanation": "`.get(key, default)` returns the default (here `0`) when the key is missing, which is perfect for a running total."
+        },
+        {
+          "n": 7,
+          "question_md": "What does `max(totals, key=totals.get)` return?",
+          "options": {
+            "A": "The largest total amount as a number",
+            "B": "The product name whose total is largest",
+            "C": "A sorted list of products",
+            "D": "The number of products"
+          },
+          "correct": "B",
+          "explanation": "With `key=totals.get`, `max` compares products by their totals and returns the product name with the biggest one."
+        },
+        {
+          "n": 8,
+          "question_md": "Do you need pandas to complete this module's lab?",
+          "options": {
+            "A": "Yes, it's required",
+            "B": "No, the standard library `csv` and `statistics` are enough",
+            "C": "Only for reading the file",
+            "D": "Only for the average"
+          },
+          "correct": "B",
+          "explanation": "Everything here is done with the standard library. Pandas is an optional \"going further\" tool, not a requirement."
+        }
+      ],
+      "lab": {
+        "id": "16-data-analysis",
+        "dir": "labs/16-data-analysis",
+        "topic": "analysis",
+        "learner_file": "labs/16-data-analysis/analysis.py",
+        "solution_file": "labs/16-data-analysis/analysis_solution.py",
+        "starter_snapshot": "starters/16-data-analysis__analysis.py"
+      }
+    },
+    {
+      "num": "17",
+      "title": "Capstone Project",
+      "slug": "17-capstone",
+      "lesson_md": "# Module 17 \u2014 Capstone Project\n\n## What you'll learn\n\n- How the three tracks fit together into one real pipeline: fetch, process, report\n- How to load records from JSON and total them by category\n- How to build a small summary of a dataset\n- How to write your results out as a clean CSV report\n\n---\n\n## The concept\n\nThis is the capstone. You've learned automation (working with files), web and APIs\n(fetching data), and data analysis (turning numbers into answers). A huge amount of real\nprogramming is just those three steps chained together:\n\n**Fetch the records \u2192 process them \u2192 write a report.**\n\nThat's a *pipeline*. Picture an assembly line. Raw material comes in at one end (data from\nan API or a file). In the middle, you shape it (clean it, total it, summarize it). At the\nfar end, a finished product rolls out (a CSV report, a chart, an email). Almost every data\njob you'll ever write is some version of this line.\n\nLet's walk the whole thing slowly, because this is the biggest lab in the course.\n\n### Step 1 \u2014 Fetch the records\n\nIn the real world you'd call an API, get back JSON, and have a list of dicts. You did\nexactly this in the Web & APIs track:\n\n```python\nimport requests\nresponse = requests.get(\"https://some-store.example.com/orders\")\norders = response.json()   # a list of order dicts\n```\n\nFor the **graded lab**, you don't fetch over the network. Instead you load a saved\n`orders.json` file from the lab folder. Same shape, but fast, offline, and predictable, so\nthe tests always agree on the answer. There's an optional `live_demo.py` in the lab that\ndoes a real fetch if you're online and curious.\n\nEither way, after step 1 you hold a list of order dicts. Each order in this lab looks like:\n\n```python\n{\"id\": 1, \"category\": \"books\", \"amount\": 12.99}\n```\n\n### Step 2 \u2014 Process the records\n\nNow you shape the data. You'll write the same kinds of functions you practiced in the data\ntrack:\n\n- **Total by category.** Group the orders and add up the amounts per category.\n- **Summarize.** How many orders are there? What's the grand total? What categories exist?\n\nThis is plain Python: loop, convert, tally, sort. No magic.\n\n### Step 3 \u2014 Write the report\n\nFinally you save your results so a human (or another program) can use them. A CSV is a\ngreat, universal choice. You'll write a file with a header and one row per category:\n\n```\ncategory,total\nbooks,25.98\nfood,7.50\ntoys,40.00\n```\n\nYou'll sort the categories alphabetically so the report comes out the same every time.\nThat predictability is the same lesson from every track in this part of the course: sort\nyour output, and your program behaves identically everywhere.\n\n### Putting it together\n\nHere's the shape of the whole pipeline, using the functions you'll build in the lab:\n\n```python\norders = load_orders(\"orders.json\")      # 1. fetch (here, load from file)\nprint(summary(orders))                   # 2. process: a quick overview\nwrite_report(\"report.csv\", orders)       # 3. report: save totals per category\n```\n\nThree lines. Fetch, process, report. That's a real program.\n\n---\n\n## Show me\n\n### Loading JSON records\n\nJSON on disk loads straight into Python lists and dicts:\n\n```python\nimport json\n\nwith open(\"orders.json\") as f:\n    orders = json.load(f)\n\nprint(len(orders))         # 6\nprint(orders[0])           # {'id': 1, 'category': 'books', 'amount': 12.99}\nprint(orders[0][\"amount\"]) # 12.99   <- already a float here, since JSON keeps number types\n```\n\nUnlike a CSV, JSON remembers types, so `amount` comes back as a real number, not text. One\nless conversion to worry about.\n\n### Totalling by category\n\nSame grouping pattern as the data track:\n\n```python\ntotals = {}\nfor order in orders:\n    category = order[\"category\"]\n    totals[category] = totals.get(category, 0) + order[\"amount\"]\n\nprint(totals)   # {'books': 25.98, 'toys': 40.0, 'food': 7.5}\n```\n\n### A small summary\n\nA dict makes a tidy summary you can print or pass along:\n\n```python\nsummary = {\n    \"count\": len(orders),\n    \"total\": sum(order[\"amount\"] for order in orders),\n    \"categories\": sorted({order[\"category\"] for order in orders}),\n}\nprint(summary)\n# {'count': 6, 'total': 73.48, 'categories': ['books', 'food', 'toys']}\n```\n\n`{order[\"category\"] for order in orders}` is a **set comprehension**: it collects the\ndistinct categories (a set drops duplicates). Wrapping it in `sorted(...)` turns that set\ninto a predictable, alphabetical list.\n\n### Writing a CSV report\n\nUse `csv.writer` to write a header and one row per category, sorted:\n\n```python\nimport csv\n\ntotals = {\"toys\": 40.0, \"books\": 25.98, \"food\": 7.5}\n\nwith open(\"report.csv\", \"w\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerow([\"category\", \"total\"])        # the header\n    for category in sorted(totals):               # sorted -> same order every run\n        writer.writerow([category, totals[category]])\n```\n\nThat produces the clean, alphabetized `report.csv` shown earlier. `writer.writerow(...)`\ntakes a list of values and writes them as one comma-separated line. Opening with\n`newline=\"\"` is the recommended way to write CSV files.\n\n---\n\n## Common mistakes\n\n- **Re-fetching or re-reading inside a loop.** Load the orders once into a list, then loop\n  over that list as many times as you need. Re-reading a file or re-calling an API on every\n  pass is slow and, for an API, rude.\n- **Forgetting to sort the report rows.** If you write categories in dict order, the file\n  can come out differently on different runs, which makes it hard to compare reports or\n  test them. Sort the categories before writing.\n- **Opening the CSV without `newline=\"\"`.** Writing a CSV without `newline=\"\"` can insert\n  blank lines between rows on some systems. Always open CSV files for writing with\n  `open(path, \"w\", newline=\"\")`.\n\n---\n\n## Try it\n\nOpen **`labs/17-capstone/`** and read its `README.md`. This is the biggest lab. You'll\ncomplete the functions in `capstone.py`, then run:\n\n```bash\npytest labs/17-capstone/\n```\n\nThe read tests load the saved `orders.json` from the lab folder, and the write test uses a\ntemporary folder, so everything is offline and safe. Make it green to finish the course.\nIf you're online, try `python labs/17-capstone/live_demo.py` to see a real fetch feed the\nsame pipeline.\n\n---",
+      "quiz": [
+        {
+          "n": 1,
+          "question_md": "What three steps make up the pipeline this capstone teaches?",
+          "options": {
+            "A": "Install, configure, deploy",
+            "B": "Fetch, process, report",
+            "C": "Open, edit, save",
+            "D": "Read, delete, undo"
+          },
+          "correct": "B",
+          "explanation": "Fetch the records, process them, write a report. That pipeline underlies a huge amount of real programming."
+        },
+        {
+          "n": 2,
+          "question_md": "Why does the graded lab load `orders.json` from a file instead of calling an API?",
+          "options": {
+            "A": "APIs can't return JSON",
+            "B": "So the tests are fast, offline, and always agree on the answer",
+            "C": "Because `requests` is not installed",
+            "D": "JSON files are the only data format Python understands"
+          },
+          "correct": "B",
+          "explanation": "A saved file keeps the tests fast, offline, and deterministic, so they always expect the same result."
+        },
+        {
+          "n": 3,
+          "question_md": "After `json.load(f)` on this lab's file, what type is `order[\"amount\"]`?",
+          "options": {
+            "A": "`str`, like CSV values",
+            "B": "`float`, because JSON keeps number types",
+            "C": "`bool`",
+            "D": "A list"
+          },
+          "correct": "B",
+          "explanation": "JSON preserves number types, so `amount` loads as a `float`. CSV, by contrast, gives you text."
+        },
+        {
+          "n": 4,
+          "question_md": "What does `totals.get(category, 0) + order[\"amount\"]` accomplish?",
+          "options": {
+            "A": "Replaces the total with the newest amount",
+            "B": "Adds this order's amount onto the running total for its category",
+            "C": "Deletes the category",
+            "D": "Counts the categories"
+          },
+          "correct": "B",
+          "explanation": "`.get(category, 0)` reads the running total (or 0 if new), and you add this order's amount to it."
+        },
+        {
+          "n": 5,
+          "question_md": "What does `sorted({order[\"category\"] for order in orders})` produce?",
+          "options": {
+            "A": "A count of orders",
+            "B": "The total amount",
+            "C": "A sorted list of the distinct category names",
+            "D": "The first category only"
+          },
+          "correct": "C",
+          "explanation": "The set comprehension collects distinct categories, and `sorted(...)` returns them as an alphabetical list."
+        },
+        {
+          "n": 6,
+          "question_md": "Why sort the categories before writing the CSV report?",
+          "options": {
+            "A": "It makes the file smaller",
+            "B": "So the report comes out the same every run and is easy to compare and test",
+            "C": "It's required by the csv module",
+            "D": "It converts the numbers to text"
+          },
+          "correct": "B",
+          "explanation": "Sorting makes the output identical every run, which is easy to compare across runs and easy to test."
+        },
+        {
+          "n": 7,
+          "question_md": "What does `writer.writerow([\"category\", \"total\"])` write?",
+          "options": {
+            "A": "Two separate files",
+            "B": "One CSV line: `category,total`",
+            "C": "A dict",
+            "D": "Nothing until you close the file"
+          },
+          "correct": "B",
+          "explanation": "`writerow` takes a list and writes it as one comma-separated line, here the header `category,total`."
+        },
+        {
+          "n": 8,
+          "question_md": "Why open a CSV file for writing with `newline=\"\"`?",
+          "options": {
+            "A": "To make it write faster",
+            "B": "To avoid stray blank lines between rows on some systems",
+            "C": "To encrypt the file",
+            "D": "It has no effect"
+          },
+          "correct": "B",
+          "explanation": "Opening CSV files with `newline=\"\"` prevents extra blank lines between rows on some platforms."
+        }
+      ],
+      "lab": {
+        "id": "17-capstone",
+        "dir": "labs/17-capstone",
+        "topic": "capstone",
+        "learner_file": "labs/17-capstone/capstone.py",
+        "solution_file": "labs/17-capstone/capstone_solution.py",
+        "starter_snapshot": "starters/17-capstone__capstone.py"
+      }
+    }
+  ]
+}

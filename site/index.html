@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python for Beginners</title>
+
+  <!-- Vendored styles (work offline) -->
+  <link rel="stylesheet" href="/static/vendor/highlight-github.min.css">
+  <link rel="stylesheet" href="/static/vendor/codemirror.min.css">
+  <link rel="stylesheet" href="/static/vendor/codemirror-eclipse.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <a class="brand" href="#/">Python <span>for Beginners</span></a>
+    <div class="topbar-progress" title="Overall progress">
+      <div class="bar"><div id="overall-bar" class="bar-fill"></div></div>
+      <span id="overall-pct">0%</span>
+    </div>
+    <button id="name-chip" class="name-chip" title="Click to change your name"></button>
+  </header>
+
+  <div id="name-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="name-modal-title">
+    <div class="modal-card">
+      <h2 id="name-modal-title">👋 Welcome!</h2>
+      <p>What should the app call you? You can change this any time.</p>
+      <input id="name-input" type="text" maxlength="40" placeholder="Your name or handle"
+             autocomplete="off" spellcheck="false">
+      <div class="modal-actions">
+        <button class="btn ghost" id="name-skip">Maybe later</button>
+        <button class="btn primary" id="name-save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Modules"></nav>
+    <main id="content" class="content" tabindex="-1"></main>
+  </div>
+
+  <!-- Vendored scripts (work offline) -->
+  <script src="/static/vendor/marked.min.js"></script>
+  <script src="/static/vendor/highlight.min.js"></script>
+  <script src="/static/vendor/codemirror.min.js"></script>
+  <script src="/static/vendor/codemirror-python.min.js"></script>
+  <script src="/static/vendor/codemirror-matchbrackets.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

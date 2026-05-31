@@ -1,0 +1,10 @@
+# Python for Beginners — course dependencies
+# Install with:  pip install -r requirements.txt
+# (inside your activated virtual environment — see SETUP.md)
+
+pytest        # runs the auto-checking tests for every lab
+requests      # used in Module 15, the Web & APIs track
+
+# Optional, only if you want to explore Module 16's "going further" section.
+# Not required for any lab to pass — leave commented unless you want it.
+# pandas
